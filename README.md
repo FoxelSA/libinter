@@ -8,7 +8,7 @@ processing.
 
 ### Documentation
 
-This library is currently in early day of development.
+This library is currently in early days of development.
 
 
 ### Copyright
