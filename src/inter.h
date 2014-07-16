@@ -39,7 +39,7 @@
     //! @file   inter.h
     //! @author Nils Hamel (nils.hamel@foxel.ch)
     //! 
-    //! Library common header file.
+    //! Library common header file
 
 /* 
     Header - Include guard

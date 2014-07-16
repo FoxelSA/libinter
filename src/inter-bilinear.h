@@ -93,8 +93,8 @@
     //! @param bm_h Bitmap height
     //! @param bm_d Bitmap number of chromatic layer
     //! @param bm_c Bitmap interpolated layer
-    //! @param bm_x Interpolated point position x
-    //! @param bm_y Interpolated point position y    
+    //! @param bm_x Interpolated point position x (floating point)
+    //! @param bm_y Interpolated point position y (floating point)
     //! @return Interpolated value
 
     inter_C8_t inter_bilinearf(

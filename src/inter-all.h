@@ -39,7 +39,7 @@
     //! @file   inter-all.h
     //! @author Nils Hamel (nils.hamel@foxel.ch)
     //! 
-    //! Library general includer.
+    //! Library general include (include all features)
 
 /* 
     Header - Include guard
