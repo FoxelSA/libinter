@@ -2,13 +2,11 @@
 
 ## libinter<br/>Interpolation methods library
 
-This library is dedicated to interpolation methods. It provides fast interpolation methods
-using order two, four and six schemes. It is mainly designed for fast and quality image
-processing.
+The libinter library is dedicated to interpolation methods. The provided interpolation methods have different orders to provide schemes that can fit a large spectrum of situations and constraints.
 
 ### Documentation
 
-This library is currently in early days of development.
+Find more documentation on the [wiki](https://github.com/FoxelSA/libinter/wiki).
 
 
 ### Copyright
