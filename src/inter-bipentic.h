@@ -37,7 +37,7 @@
  */
 
     //! @file   inter-bipentic.h
-    //! @author Nils Hamel (nils.hamel@foxel.ch)
+    //! @author Nils Hamel (n.hamel@foxel.ch)
     //! 
     //! Bipentic interpolation methods
 

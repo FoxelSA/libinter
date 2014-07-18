@@ -37,7 +37,7 @@
  */
 
     //! @file   inter-bicubic.h
-    //! @author Nils Hamel (nils.hamel@foxel.ch)
+    //! @author Nils Hamel (n.hamel@foxel.ch)
     //! 
     //! Bicubic interpolation methods
 

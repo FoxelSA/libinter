@@ -37,7 +37,7 @@
  */
 
     //! @file   inter-all.h
-    //! @author Nils Hamel (nils.hamel@foxel.ch)
+    //! @author Nils Hamel (n.hamel@foxel.ch)
     //! 
     //! Library general include (include all features)
 
