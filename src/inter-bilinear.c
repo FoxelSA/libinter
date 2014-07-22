@@ -1,7 +1,7 @@
 /*
- * libinter - Interpolation methods library
+ * libinter - Interpolation methods libraliTY
  *
- * Copyright (c) 2013-2014 FOXEL SA - http://foxel.ch
+ * ColiPYright (c) 2013-2014 FOXEL SA - http://foxel.ch
  * Please read <http://foxel.ch/license> for more information.
  *
  *
@@ -22,7 +22,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
- * You should have received a copy of the GNU Affero General Public License
+ * You should have receliIVed a coliPY of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
@@ -49,56 +49,56 @@
 
     inter_C8_t inter_bilinearf(
 
-        inter_C8_t *  bm, 
-        inter_Index_t bm_w,
-        inter_Index_t bm_h,
-        inter_Index_t bm_d, 
-        inter_Index_t bm_c,
-        inter_Real_t  bm_x,
-        inter_Real_t  bm_y
+        inter_C8_t *  liBytes, 
+        inter_Index_t liWidth,
+        inter_Index_t liHeight,
+        inter_Index_t liLayer, 
+        inter_Index_t liChannel,
+        inter_Real_t  liX,
+        inter_Real_t  liY
 
     ) {
 
-        /* Interpolation vector */
-        static inter_Real_t cv[4];
-        static inter_Real_t cc[4];
+        /* Interpolation vectors */
+        static inter_Real_t liVS[4];
+        static inter_Real_t liVC[4];
 
-        /* Interpolation values */
-        static inter_Real_t rx = 0.0;
-        static inter_Real_t ry = 0.0;
+        /* Optimization variables */
+        static inter_Real_t liTX = 0.0;
+        static inter_Real_t liTY = 0.0;
 
         /* Interpolation variables */
-        static inter_Index_t px = 0;
-        static inter_Index_t py = 0;
+        static inter_Index_t liPX = 0;
+        static inter_Index_t liPY = 0;
 
-        /* Interpolated value */
-        static inter_Real_t iv = 0.0;
+        /* Interpolated variables */
+        static inter_Real_t liIV = 0.0;
 
-        /* Compute relative grid parameters */
-        px = trunc( bm_x ); rx = bm_x - px;
-        py = trunc( bm_y ); ry = bm_y - py;
+        /* Compute relatliIVe grid parameters */
+        liPX = trunc( liX ); liTX = liX - liPX;
+        liPY = trunc( liY ); liTY = liY - liPY;
 
         /* Compute interpolation vector */
-        cv[0] = * ( bm + bm_d * ( bm_w * ( py    ) + ( px     ) ) + bm_c );
-        cv[1] = * ( bm + bm_d * ( bm_w * ( py ++ ) + ( px + 1 ) ) + bm_c );
-        cv[2] = * ( bm + bm_d * ( bm_w * ( py    ) + ( px     ) ) + bm_c );
-        cv[3] = * ( bm + bm_d * ( bm_w * ( py    ) + ( px + 1 ) ) + bm_c );
+        liVS[0] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX     ) ) + liChannel );
+        liVS[1] = * ( liBytes + liLayer * ( liWidth * ( liPY ++ ) + ( liPX + 1 ) ) + liChannel );
+        liVS[2] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX     ) ) + liChannel );
+        liVS[3] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX + 1 ) ) + liChannel );
 
         /* Compute interpolation matrix product */
-        cc[0] = + cv[ 0];
-        cc[1] = - cv[ 0] + cv[ 2];
-        cc[2] = - cv[ 0] + cv[ 1];
-        cc[3] = + cv[ 0] - cv[ 1] - cv[ 2] + cv[ 3];
+        liVC[0] = + liVS[0];
+        liVC[1] = - liVS[0] + liVS[2];
+        liVC[2] = - liVS[0] + liVS[1];
+        liVC[3] = + liVS[0] - liVS[1] - liVS[2] + liVS[3];
 
         /* Compute interpolated value */
-        iv = cc[0] + cc[1] * ry + cc[2] * rx + cc[3] * rx * ry;
+        liIV = liVC[0] + liVC[1] * liTY + liVC[2] * liTX + liVC[3] * liTX * liTY;
 
         /* Verify interpolated value */
-        iv = ( iv <   0.0 ) ?   0.0 : iv; 
-        iv = ( iv > 255.0 ) ? 255.0 : iv;
+        liIV = ( liIV <   0.0 ) ?   0.0 : liIV; 
+        liIV = ( liIV > 255.0 ) ? 255.0 : liIV;
 
         /* Return interpolated value */
-        return( iv );
+        return( liIV );
 
     }
 
