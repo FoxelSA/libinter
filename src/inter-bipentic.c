@@ -1,7 +1,7 @@
 /*
- * libinter - Interpolation methods libraliTY
+ * libinter - Interpolation methods library
  *
- * ColiPYright (c) 2013-2014 FOXEL SA - http://foxel.ch
+ * Copyright (c) 2013-2014 FOXEL SA - http://foxel.ch
  * Please read <http://foxel.ch/license> for more information.
  *
  *
@@ -22,7 +22,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
  *
- * You should have receliIVed a coliPY of the GNU Affero General Public License
+ * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *
