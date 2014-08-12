@@ -45,8 +45,8 @@
     Header - Include guard
  */
 
-    # ifndef __LIBINTER_INTER__
-    # define __LIBINTER_INTER__
+    # ifndef __LI__
+    # define __LI__
 
 /* 
     Header - C/C++ compatibility
@@ -76,37 +76,37 @@
  */
 
     /* Define pixel component type */
-    typedef uint8_t inter_C8_t;
+    typedef uint8_t li_C8_t;
 
     /* Define general index */
-    typedef int64_t inter_Size_t;
+    typedef int64_t li_Size_t;
 
     /* Define general enumeration */
-    typedef int64_t inter_Enum_t;
+    typedef int64_t li_Enum_t;
 
     /* Define floating type */
-    typedef double inter_Real_t;
+    typedef double li_Real_t;
 
     /* General interpolation method prototype */
-    typedef inter_C8_t ( * inter_Method_t ) ( inter_C8_t * , inter_Size_t , inter_Size_t , inter_Size_t , inter_Size_t , inter_Real_t , inter_Real_t );
+    typedef li_C8_t ( * li_Method_t ) ( li_C8_t * , li_Size_t , li_Size_t , li_Size_t , li_Size_t , li_Real_t , li_Real_t );
 
     /* Define literal suffix */
-    # define inter_C8_s  ( x )  UINT8_C( x )
-    # define inter_Size_s( x )  INT64_C( x )
-    # define inter_Enum_s( x )  INT64_C( x )
-    # define inter_Real_s( x )  ( x )
+    # define li_C8_s  ( x )  UINT8_C( x )
+    # define li_Size_s( x )  INT64_C( x )
+    # define li_Enum_s( x )  INT64_C( x )
+    # define li_Real_s( x )  ( x )
 
     /* Define formated output specifiers */
-    # define inter_C8_p         PRIu8
-    # define inter_Size_p       PRId64
-    # define inter_Enum_p       PRId64
-    # define inter_Real_p       "lf"
+    # define li_C8_p         PRIu8
+    # define li_Size_p       PRId64
+    # define li_Enum_p       PRId64
+    # define li_Real_p       "lf"
 
     /* Define formated input specifiers */
-    # define inter_C8_i         SCNu8
-    # define inter_Size_i       SCNu64
-    # define inter_Enum_i       SCNu64
-    # define inter_Real_i       "lf"
+    # define li_C8_i         SCNu8
+    # define li_Size_i       SCNu64
+    # define li_Enum_i       SCNu64
+    # define li_Real_i       "lf"
 
 /* 
     Header - Structures

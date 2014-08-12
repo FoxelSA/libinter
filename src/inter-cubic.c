@@ -36,67 +36,48 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter-all.h
-    //! @author Nils Hamel (n.hamel@foxel.ch)
-    //! 
-    //! Library general includer
 
 /* 
-    Header - Include guard
+    Source - Includes
  */
 
-    # ifndef __LI_INTER_ALL__
-    # define __LI_INTER_ALL__
-
-/* 
-    Header - C/C++ compatibility
- */
-
-    # ifdef __cplusplus
-    extern "C" {
-    # endif
-
-/* 
-    Header - Includes
- */
-
-    # include "inter.h"
     # include "inter-cubic.h"
-    # include "inter-bilinear.h"
-    # include "inter-bicubic.h"
-    # include "inter-bipentic.h"
-
-/* 
-    Header - Preprocessor definitions
- */
-
-/* 
-    Header - Preprocessor macros
- */
-
-/* 
-    Header - Typedefs
- */
-
-/* 
-    Header - Structures
- */
-
-/* 
-    Header - Function prototypes
- */
-
-/* 
-    Header - C/C++ compatibility
- */
-
-    # ifdef __cplusplus
-    }
-    # endif
 
 /*
-    Header - Include guard
+    Source - Elementary cubic interpolation
  */
 
-    # endif
+    li_Real_t li_cubic( 
+
+        li_Enum_t liFlag,
+        li_Real_t liX,
+        li_Real_t liX1,
+        li_Real_t liX2,
+        li_Real_t liY1,
+        li_Real_t liY2,
+        li_Real_t liDX1,
+        li_Real_t liDX2
+
+    ) {
+
+        /* Cubic coefficient variables */
+        static li_Real_t liA = li_Real_s( 0.0 );
+        static li_Real_t liB = li_Real_s( 0.0 );
+
+        /* Check cubic coefficient flag */
+        if ( liFlag == LI_CUBIC_FLAG_SET ) {
+
+            /* Compute cubic coefficients */
+            liA = + ( liDX1 ) * ( liX2 - liX1 ) - ( liY2 - liY1 );
+            liB = - ( liDX2 ) * ( liX2 - liX1 ) + ( liY2 - liY1 );
+
+        }
+
+        /* Compute interpolation parameter */
+        liX = ( liX - liX1 ) / ( liX2 - liX1 );
+
+        /* Compute interpolated value */
+        return( ( ( li_Real_s( 1.0 ) - liX ) * liY1 ) + ( liX * liY2 ) + ( liX * ( li_Real_s( 1.0 ) - liX ) ) * ( liA * ( li_Real_s( 1.0 ) - liX ) + liB * liX ) );
+
+    }
 

@@ -45,8 +45,8 @@
     Header - Include guard
  */
 
-    # ifndef __LIBINTER_BILINEAR__
-    # define __LIBINTER_BILINEAR__
+    # ifndef __LI_BILINEAR__
+    # define __LI_BILINEAR__
 
 /* 
     Header - C/C++ compatibility
@@ -69,6 +69,9 @@
 /* 
     Header - Preprocessor macros
  */
+
+    /* Ascending compatibility alias - Ensured until v1.0 */
+    # define inter_bilinearf(v1,v2,v3,v4,v5,v6,v7) li_bilinearf(v1,v2,v3,v4,v5,v6,v7)
 
 /* 
     Header - Typedefs
@@ -98,15 +101,15 @@
     //! @param liY Interpolated point position y (floating point)
     //! @return Interpolated value
 
-    inter_C8_t inter_bilinearf(
+    li_C8_t li_bilinearf(
 
-        inter_C8_t * liBytes, 
-        inter_Size_t liWidth,
-        inter_Size_t liHeight,
-        inter_Size_t liLayer, 
-        inter_Size_t liChannel,
-        inter_Real_t liX,
-        inter_Real_t liY
+        li_C8_t * liBytes, 
+        li_Size_t liWidth,
+        li_Size_t liHeight,
+        li_Size_t liLayer, 
+        li_Size_t liChannel,
+        li_Real_t liX,
+        li_Real_t liY
 
     );
 

@@ -47,44 +47,44 @@
     Source - Fast bicubic interpolation method
  */
 
-    inter_C8_t inter_bicubicf(
+    li_C8_t li_bicubicf(
 
-        inter_C8_t * liBytes, 
-        inter_Size_t liWidth,
-        inter_Size_t liHeight,
-        inter_Size_t liLayer, 
-        inter_Size_t liChannel,
-        inter_Real_t liX,
-        inter_Real_t liY
+        li_C8_t * liBytes, 
+        li_Size_t liWidth,
+        li_Size_t liHeight,
+        li_Size_t liLayer, 
+        li_Size_t liChannel,
+        li_Real_t liX,
+        li_Real_t liY
 
     ) {
 
         /* Interpolation vectors */
-        static inter_Real_t liVS[16];
-        static inter_Real_t liVC[16];
+        static li_Real_t liVS[16];
+        static li_Real_t liVC[16];
 
         /* Optimization variables */
-        static inter_Real_t liTX1 = 0.0;
-        static inter_Real_t liTY1 = 0.0;
-        static inter_Real_t liTX2 = 0.0;
-        static inter_Real_t liTY2 = 0.0;
-        static inter_Real_t liTX3 = 0.0;
-        static inter_Real_t liTY3 = 0.0;
+        static li_Real_t liTX1 = 0.0;
+        static li_Real_t liTY1 = 0.0;
+        static li_Real_t liTX2 = 0.0;
+        static li_Real_t liTY2 = 0.0;
+        static li_Real_t liTX3 = 0.0;
+        static li_Real_t liTY3 = 0.0;
 
         /* Interpolation variables */
-        static inter_Size_t liPX = 0;
-        static inter_Size_t liPY = 0;
+        static li_Size_t liPX = 0;
+        static li_Size_t liPY = 0;
 
         /* Sampling variables */
-        static inter_Size_t liPXm1 = 0;
-        static inter_Size_t liPXp1 = 0;
-        static inter_Size_t liPXp2 = 0;
-        static inter_Size_t liPYm1 = 0;
-        static inter_Size_t liPYp1 = 0;
-        static inter_Size_t liPYp2 = 0;
+        static li_Size_t liPXm1 = 0;
+        static li_Size_t liPXp1 = 0;
+        static li_Size_t liPXp2 = 0;
+        static li_Size_t liPYm1 = 0;
+        static li_Size_t liPYp1 = 0;
+        static li_Size_t liPYp2 = 0;
 
         /* Interpolated variables */
-        static inter_Real_t liIV = 0.0;
+        static li_Real_t liIV = 0.0;
 
         /* Compute relatliIVe grid parameters */
         liPX = trunc( liX );

@@ -36,17 +36,17 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter-bipentic.h
+    //! @file   inter-cubic.h
     //! @author Nils Hamel (n.hamel@foxel.ch)
     //! 
-    //! Bipentic interpolation methods
+    //! Cubic interpolation methods
 
 /* 
     Header - Include guard
  */
 
-    # ifndef __LI_BIPENTIC__
-    # define __LI_BIPENTIC__
+    # ifndef __LI_CUBIC__
+    # define __LI_CUBIC__
 
 /* 
     Header - C/C++ compatibility
@@ -66,12 +66,13 @@
     Header - Preprocessor definitions
  */
 
+    /* Define cubic element coefficient flag */
+    # define LI_CUBIC_FLAG_LEA li_Enum_s( 0 )
+    # define LI_CUBIC_FLAG_SET li_Enum_s( 1 )
+
 /* 
     Header - Preprocessor macros
  */
-
-    /* Ascending compatibility alias - Ensured until v1.0 */
-    # define inter_bipenticf(v1,v2,v3,v4,v5,v6,v7) li_bipenticf(v1,v2,v3,v4,v5,v6,v7)
 
 /* 
     Header - Typedefs
@@ -85,31 +86,37 @@
     Header - Function prototypes
  */
 
-    //! Fast bipentic interpolation method
+    //! Elementary cubic interpolation
 
-    //! This function performe an order six fast bipentic interpolation of bitmap 
-    //! pixels based on bm bitmap. The value of floating point coordinates have to 
-    //! be in the [0,liWidth-1[ × [0,liHeight-1[ range. This last condition is not
-    //! verified by the function.
-    //! 
-    //! @param liBytes Pointer to bitmap array
-    //! @param liWidth Bitmap width
-    //! @param liHeight Bitmap height
-    //! @param liLayer Bitmap number of chromatic layer
-    //! @param liChannel Bitmap interpolated layer
-    //! @param liX Interpolated point position x (floating point)
-    //! @param liY Interpolated point position y (floating point)
+    //! This function return the interpolated value defined by a cubic interpolant. The
+    //! interpolant is computed considering the cubic function that intercept the points
+    //! defined by (liX1,liY1) and (liX2,liY2). The two last degree of liberty are filled
+    //! considering the derivatives at the liX1 and liX2 point given by liDX1 and liDX2,
+    //! respectively.
+    //!
+    //! If the liFlag is set, the interpolant coefficient are recomputed. Otherwise, the
+    //! previously computed coefficient are considered.
+    //!
+    //! @param liFlag Cubic coefficient computation flag
+    //! @param liX Interpolated value absciss
+    //! @param liX1 Cubic interpolant control point absciss
+    //! @param liY1 Cubic interpolant control point ordinate
+    //! @param liX2 Cubic interpolant control point absciss
+    //! @param liY2 Cubic interpolant control point ordinate
+    //! @param liDX1 Cubic interpolant derivative at liX1 absciss
+    //! @param liDX2 Cubic interpolant derivative at liX2 absciss
     //! @return Interpolated value
 
-    li_C8_t li_bipenticf(
+    li_Real_t li_cubic( 
 
-        li_C8_t * liBytes, 
-        li_Size_t liWidth,
-        li_Size_t liHeight,
-        li_Size_t liLayer, 
-        li_Size_t liChannel,
+        li_Enum_t liFlag,
         li_Real_t liX,
-        li_Real_t liY
+        li_Real_t liX1,
+        li_Real_t liX2,
+        li_Real_t liY1,
+        li_Real_t liY2,
+        li_Real_t liDX1,
+        li_Real_t liDX2
 
     );
 

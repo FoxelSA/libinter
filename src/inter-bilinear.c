@@ -47,32 +47,32 @@
     Source - Fast bilinear interpolation method
  */
 
-    inter_C8_t inter_bilinearf(
+    li_C8_t li_bilinearf(
 
-        inter_C8_t * liBytes, 
-        inter_Size_t liWidth,
-        inter_Size_t liHeight,
-        inter_Size_t liLayer, 
-        inter_Size_t liChannel,
-        inter_Real_t liX,
-        inter_Real_t liY
+        li_C8_t * liBytes, 
+        li_Size_t liWidth,
+        li_Size_t liHeight,
+        li_Size_t liLayer, 
+        li_Size_t liChannel,
+        li_Real_t liX,
+        li_Real_t liY
 
     ) {
 
         /* Interpolation vectors */
-        static inter_Real_t liVS[4];
-        static inter_Real_t liVC[4];
+        static li_Real_t liVS[4];
+        static li_Real_t liVC[4];
 
         /* Optimization variables */
-        static inter_Real_t liTX = 0.0;
-        static inter_Real_t liTY = 0.0;
+        static li_Real_t liTX = 0.0;
+        static li_Real_t liTY = 0.0;
 
         /* Interpolation variables */
-        static inter_Size_t liPX = 0;
-        static inter_Size_t liPY = 0;
+        static li_Size_t liPX = 0;
+        static li_Size_t liPY = 0;
 
         /* Interpolated variables */
-        static inter_Real_t liIV = 0.0;
+        static li_Real_t liIV = 0.0;
 
         /* Compute relatliIVe grid parameters */
         liPX = trunc( liX ); liTX = liX - liPX;
