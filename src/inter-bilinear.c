@@ -49,13 +49,13 @@
 
     inter_C8_t inter_bilinearf(
 
-        inter_C8_t *  liBytes, 
-        inter_Index_t liWidth,
-        inter_Index_t liHeight,
-        inter_Index_t liLayer, 
-        inter_Index_t liChannel,
-        inter_Real_t  liX,
-        inter_Real_t  liY
+        inter_C8_t * liBytes, 
+        inter_Size_t liWidth,
+        inter_Size_t liHeight,
+        inter_Size_t liLayer, 
+        inter_Size_t liChannel,
+        inter_Real_t liX,
+        inter_Real_t liY
 
     ) {
 
@@ -68,8 +68,8 @@
         static inter_Real_t liTY = 0.0;
 
         /* Interpolation variables */
-        static inter_Index_t liPX = 0;
-        static inter_Index_t liPY = 0;
+        static inter_Size_t liPX = 0;
+        static inter_Size_t liPY = 0;
 
         /* Interpolated variables */
         static inter_Real_t liIV = 0.0;

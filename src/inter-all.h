@@ -61,6 +61,7 @@
  */
 
     # include "inter.h"
+    # include "inter-cubic.h"
     # include "inter-bilinear.h"
     # include "inter-bicubic.h"
     # include "inter-bipentic.h"

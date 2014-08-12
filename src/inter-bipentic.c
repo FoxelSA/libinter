@@ -49,13 +49,13 @@
 
     inter_C8_t inter_bipenticf(
 
-        inter_C8_t *  liBytes, 
-        inter_Index_t liWidth,
-        inter_Index_t liHeight,
-        inter_Index_t liLayer, 
-        inter_Index_t liChannel,
-        inter_Real_t  liX,
-        inter_Real_t  liY
+        inter_C8_t * liBytes, 
+        inter_Size_t liWidth,
+        inter_Size_t liHeight,
+        inter_Size_t liLayer, 
+        inter_Size_t liChannel,
+        inter_Real_t liX,
+        inter_Real_t liY
 
     ) {
 
@@ -76,20 +76,20 @@
         static inter_Real_t liTY5 = 0.0;
 
         /* Interpolation variables */
-        static inter_Index_t liPX = 0;
-        static inter_Index_t liPY = 0;
+        static inter_Size_t liPX = 0;
+        static inter_Size_t liPY = 0;
 
         /* Sampling variables */
-        static inter_Index_t liPXm2 = 0;
-        static inter_Index_t liPXm1 = 0;
-        static inter_Index_t liPXp1 = 0;
-        static inter_Index_t liPXp2 = 0;
-        static inter_Index_t liPXp3 = 0;
-        static inter_Index_t liPYm2 = 0;
-        static inter_Index_t liPYm1 = 0;
-        static inter_Index_t liPYp1 = 0;
-        static inter_Index_t liPYp2 = 0;
-        static inter_Index_t liPYp3 = 0;
+        static inter_Size_t liPXm2 = 0;
+        static inter_Size_t liPXm1 = 0;
+        static inter_Size_t liPXp1 = 0;
+        static inter_Size_t liPXp2 = 0;
+        static inter_Size_t liPXp3 = 0;
+        static inter_Size_t liPYm2 = 0;
+        static inter_Size_t liPYm1 = 0;
+        static inter_Size_t liPYp1 = 0;
+        static inter_Size_t liPYp2 = 0;
+        static inter_Size_t liPYp3 = 0;
 
         /* Interpolated variables */
         static inter_Real_t liIV = 0.0;

@@ -100,13 +100,13 @@
 
     inter_C8_t inter_bicubicf(
 
-        inter_C8_t *  liBytes, 
-        inter_Index_t liWidth,
-        inter_Index_t liHeight,
-        inter_Index_t liLayer, 
-        inter_Index_t liChannel,
-        inter_Real_t  liX,
-        inter_Real_t  liY
+        inter_C8_t * liBytes, 
+        inter_Size_t liWidth,
+        inter_Size_t liHeight,
+        inter_Size_t liLayer, 
+        inter_Size_t liChannel,
+        inter_Real_t liX,
+        inter_Real_t liY
 
     );
 
