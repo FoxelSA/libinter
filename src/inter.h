@@ -129,7 +129,7 @@
     typedef li_C8_t ( * li_Method_t ) ( li_C8_t * , li_Size_t , li_Size_t , li_Size_t , li_Size_t , li_Real_t , li_Real_t );
 
     /* Define literal suffix */
-    # define li_C8_s  ( x )  UINT8_C( x )
+    # define li_C8_s( x )    UINT8_C( x )
     # define li_Size_s( x )  INT64_C( x )
     # define li_Enum_s( x )  INT64_C( x )
     # define li_Real_s( x )  ( x )
