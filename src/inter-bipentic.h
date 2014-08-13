@@ -36,10 +36,11 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter-bipentic.h
-    //! @author Nils Hamel (n.hamel@foxel.ch)
-    //! 
-    //! Bipentic interpolation methods
+    /*! \file   inter-bipentic.h
+     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *
+     *  Bipentic C(0) class interpolation methods
+     */
 
 /* 
     Header - Include guard
@@ -85,21 +86,22 @@
     Header - Function prototypes
  */
 
-    //! Fast bipentic interpolation method
+    /*! \brief Fast bipentic interpolation method
 
-    //! This function performe an order six fast bipentic interpolation of bitmap 
-    //! pixels based on bm bitmap. The value of floating point coordinates have to 
-    //! be in the [0,liWidth-1[ × [0,liHeight-1[ range. This last condition is not
-    //! verified by the function.
-    //! 
-    //! @param liBytes Pointer to bitmap array
-    //! @param liWidth Bitmap width
-    //! @param liHeight Bitmap height
-    //! @param liLayer Bitmap number of chromatic layer
-    //! @param liChannel Bitmap interpolated layer
-    //! @param liX Interpolated point position x (floating point)
-    //! @param liY Interpolated point position y (floating point)
-    //! @return Interpolated value
+     *  This function performe an order six fast bipentic interpolation of bitmap 
+     *  pixels based on bm bitmap. The value of floating point coordinates have to 
+     *  be in the [0,liWidth-1[ × [0,liHeight-1[ range. This last condition is not
+     *  verified by the function.
+     *  
+     *  \param liBytes Pointer to bitmap array
+     *  \param liWidth Bitmap width
+     *  \param liHeight Bitmap height
+     *  \param liLayer Bitmap number of chromatic layer
+     *  \param liChannel Bitmap interpolated layer
+     *  \param liX Interpolated point position x (floating point)
+     *  \param liY Interpolated point position y (floating point)
+     *  \return Interpolated value
+     */
 
     li_C8_t li_bipenticf(
 

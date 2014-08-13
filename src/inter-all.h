@@ -36,17 +36,18 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter-all.h
-    //! @author Nils Hamel (n.hamel@foxel.ch)
-    //! 
-    //! Library general includer
+    /*! \file   inter-all.h
+     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *
+     *  Library general includer
+     */
 
 /* 
     Header - Include guard
  */
 
-    # ifndef __LI_INTER_ALL__
-    # define __LI_INTER_ALL__
+    # ifndef __LI_ALL__
+    # define __LI_ALL__
 
 /* 
     Header - C/C++ compatibility

@@ -36,10 +36,11 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter-cubic.h
-    //! @author Nils Hamel (n.hamel@foxel.ch)
-    //! 
-    //! Cubic interpolation methods
+    /*! \file   inter-cubic.h
+     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *
+     *  Cubic C(1) class interpolation methods
+     */
 
 /* 
     Header - Include guard
@@ -86,26 +87,27 @@
     Header - Function prototypes
  */
 
-    //! Elementary cubic interpolation
-
-    //! This function return the interpolated value defined by a cubic interpolant. The
-    //! interpolant is computed considering the cubic function that intercept the points
-    //! defined by (liX1,liY1) and (liX2,liY2). The two last degree of liberty are filled
-    //! considering the derivatives at the liX1 and liX2 point given by liDX1 and liDX2,
-    //! respectively.
-    //!
-    //! If the liFlag is set, the interpolant coefficient are recomputed. Otherwise, the
-    //! previously computed coefficient are considered.
-    //!
-    //! @param liFlag Cubic coefficient computation flag
-    //! @param liX Interpolated value absciss
-    //! @param liX1 Cubic interpolant control point absciss
-    //! @param liY1 Cubic interpolant control point ordinate
-    //! @param liX2 Cubic interpolant control point absciss
-    //! @param liY2 Cubic interpolant control point ordinate
-    //! @param liDX1 Cubic interpolant derivative at liX1 absciss
-    //! @param liDX2 Cubic interpolant derivative at liX2 absciss
-    //! @return Interpolated value
+    /*! \brief Elementary cubic interpolation
+     *  
+     *  This function return the interpolated value defined by a cubic interpolant. The
+     *  interpolant is computed considering the cubic function that intercept the points
+     *  defined by (liX1,liY1) and (liX2,liY2). The two last degree of liberty are filled
+     *  considering the derivatives at the liX1 and liX2 point given by liDX1 and liDX2,
+     *  respectively.
+     *  
+     *  If the liFlag is set, the interpolant coefficient are recomputed. Otherwise, the
+     *  previously computed coefficient are considered.
+     *  
+     *  \param liFlag Cubic coefficient computation flag
+     *  \param liX Interpolated value absciss
+     *  \param liX1 Cubic interpolant control point absciss
+     *  \param liY1 Cubic interpolant control point ordinate
+     *  \param liX2 Cubic interpolant control point absciss
+     *  \param liY2 Cubic interpolant control point ordinate
+     *  \param liDX1 Cubic interpolant derivative at liX1 absciss
+     *  \param liDX2 Cubic interpolant derivative at liX2 absciss
+     *  \return Interpolated value
+     */
 
     li_Real_t li_cubic( 
 

@@ -36,10 +36,42 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    //! @file   inter.h
-    //! @author Nils Hamel (n.hamel@foxel.ch)
-    //! 
-    //! Library common header file
+    /*! \file   inter.h
+     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *
+     *  Library common header file
+     */
+
+    /*! \mainpage libinter
+     *
+     *  \section libinter
+     *  \section _ Interpolation methods library
+     *
+     *  The libinter library is dedicated to interpolation methods. The provided 
+     *  interpolation methods have different orders to provide schemes that can
+     *  fit a large spectrum of situations and constraints.
+     *
+     *  \section Documentation
+     *
+     *  More documentation can be found on the wiki provided on the project github
+     *  repository (https://github.com/FoxelSA/libinter/wiki).
+     *
+     *  \section Copyright
+     * 
+     *  Copyright (c) 2013-2014 FOXEL SA - http://foxel.ch \n
+     *  This program is part of the FOXEL project <http://foxel.ch>.
+     *  
+     *  Please read the COPYRIGHT.md file for more information.
+     *
+     *  \section License
+     *
+     *  This program is licensed under the terms of the GNU Affero General Public License
+     *  v3 (GNU AGPL), with two additional terms. The content is licensed under the terms 
+     *  of the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA) license.
+     *
+     *  You must read <http://foxel.ch/license> for more information about our Licensing
+     *  terms and our Usage and Attribution guidelines.
+     */
 
 /* 
     Header - Include guard
