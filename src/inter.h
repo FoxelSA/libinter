@@ -107,6 +107,7 @@
     # define inter_C8_t     li_C8_t
     # define inter_Index_t  li_Size_t
     # define inter_Real_t   li_Real_t
+    # define inter_Method_t li_Method_t
 
 /* 
     Header - Typedefs
