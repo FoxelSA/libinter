@@ -60,23 +60,23 @@
     ) {
 
         /* Interpolation vectors */
-        static li_Real_t liVS[4];
-        static li_Real_t liVC[4];
+        li_Real_t liVS[4] = { li_Real_s( 0.0 ) };
+        li_Real_t liVC[4] = { li_Real_s( 0.0 ) };
 
         /* Optimization variables */
-        static li_Real_t liTX = 0.0;
-        static li_Real_t liTY = 0.0;
+        li_Real_t liTX = li_Real_s( 0.0 );
+        li_Real_t liTY = li_Real_s( 0.0 );
 
         /* Interpolation variables */
-        static li_Size_t liPX = 0;
-        static li_Size_t liPY = 0;
+        li_Size_t liPX = li_Size_s( 0 );
+        li_Size_t liPY = li_Size_s( 0 );
 
         /* Interpolated variables */
-        static li_Real_t liIV = 0.0;
+        li_Real_t liIV = li_Real_s( 0.0 );
 
         /* Compute relatliIVe grid parameters */
-        liPX = trunc( liX ); liTX = liX - liPX;
-        liPY = trunc( liY ); liTY = liY - liPY;
+        liPX = li_Trunc( liX ); liTX = liX - liPX;
+        liPY = li_Trunc( liY ); liTY = liY - liPY;
 
         /* Compute interpolation vector */
         liVS[0] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX     ) ) + liChannel );
@@ -94,8 +94,8 @@
         liIV = liVC[0] + liVC[1] * liTY + liVC[2] * liTX + liVC[3] * liTX * liTY;
 
         /* Verify interpolated value */
-        liIV = ( liIV <   0.0 ) ?   0.0 : liIV; 
-        liIV = ( liIV > 255.0 ) ? 255.0 : liIV;
+        liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
+        liIV = ( liIV > li_Real_s( 255.0 ) ) ? li_Real_s( 255.0 ) : liIV;
 
         /* Return interpolated value */
         return( liIV );

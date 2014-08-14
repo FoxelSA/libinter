@@ -60,55 +60,55 @@
     ) {
 
         /* Interpolation vectors */
-        static li_Real_t liVS[36];
-        static li_Real_t liVC[36];
+        li_Real_t liVS[36] = { li_Real_s( 0.0 ) };
+        li_Real_t liVC[36] = { li_Real_s( 0.0 ) };
 
         /* Optimization variables */
-        static li_Real_t liTX1 = 0.0;
-        static li_Real_t liTY1 = 0.0;
-        static li_Real_t liTX2 = 0.0;
-        static li_Real_t liTY2 = 0.0;
-        static li_Real_t liTX3 = 0.0;
-        static li_Real_t liTY3 = 0.0;
-        static li_Real_t liTX4 = 0.0;
-        static li_Real_t liTY4 = 0.0;
-        static li_Real_t liTX5 = 0.0;
-        static li_Real_t liTY5 = 0.0;
+        li_Real_t liTX1 = li_Real_s( 0.0 );
+        li_Real_t liTY1 = li_Real_s( 0.0 );
+        li_Real_t liTX2 = li_Real_s( 0.0 );
+        li_Real_t liTY2 = li_Real_s( 0.0 );
+        li_Real_t liTX3 = li_Real_s( 0.0 );
+        li_Real_t liTY3 = li_Real_s( 0.0 );
+        li_Real_t liTX4 = li_Real_s( 0.0 );
+        li_Real_t liTY4 = li_Real_s( 0.0 );
+        li_Real_t liTX5 = li_Real_s( 0.0 );
+        li_Real_t liTY5 = li_Real_s( 0.0 );
 
         /* Interpolation variables */
-        static li_Size_t liPX = 0;
-        static li_Size_t liPY = 0;
+        li_Size_t liPX = li_Size_s( 0 );
+        li_Size_t liPY = li_Size_s( 0 );
 
         /* Sampling variables */
-        static li_Size_t liPXm2 = 0;
-        static li_Size_t liPXm1 = 0;
-        static li_Size_t liPXp1 = 0;
-        static li_Size_t liPXp2 = 0;
-        static li_Size_t liPXp3 = 0;
-        static li_Size_t liPYm2 = 0;
-        static li_Size_t liPYm1 = 0;
-        static li_Size_t liPYp1 = 0;
-        static li_Size_t liPYp2 = 0;
-        static li_Size_t liPYp3 = 0;
+        li_Size_t liPXm2 = li_Size_s( 0 );
+        li_Size_t liPXm1 = li_Size_s( 0 );
+        li_Size_t liPXp1 = li_Size_s( 0 );
+        li_Size_t liPXp2 = li_Size_s( 0 );
+        li_Size_t liPXp3 = li_Size_s( 0 );
+        li_Size_t liPYm2 = li_Size_s( 0 );
+        li_Size_t liPYm1 = li_Size_s( 0 );
+        li_Size_t liPYp1 = li_Size_s( 0 );
+        li_Size_t liPYp2 = li_Size_s( 0 );
+        li_Size_t liPYp3 = li_Size_s( 0 );
 
         /* Interpolated variables */
-        static li_Real_t liIV = 0.0;
+        li_Real_t liIV = li_Real_s( 0.0 );
 
         /* Compute relatliIVe grid parameters */
-        liPX = trunc( liX );
-        liPY = trunc( liY );
+        liPX = li_Trunc( liX );
+        liPY = li_Trunc( liY );
 
         /* Compute sampling nodes */
-        liPXm2 = liPX - 2; liPXm2 = ( ( liPXm2 <  0        ) ? 0            : liPXm2 );
-        liPXm1 = liPX - 1; liPXm1 = ( ( liPXm1 <  0        ) ? 0            : liPXm1 );
-        liPXp1 = liPX + 1;
-        liPXp2 = liPX + 2; liPXp2 = ( ( liPXp2 >= liWidth  ) ? liWidth - 1  : liPXp2 );
-        liPXp3 = liPX + 3; liPXp3 = ( ( liPXp3 >= liWidth  ) ? liWidth - 1  : liPXp3 );
-        liPYm2 = liPY - 2; liPYm2 = ( ( liPYm2 <  0        ) ? 0            : liPYm2 );
-        liPYm1 = liPY - 1; liPYm1 = ( ( liPYm1 <  0        ) ? 0            : liPYm1 );
-        liPYp1 = liPY + 1;
-        liPYp2 = liPY + 2; liPYp2 = ( ( liPYp2 >= liHeight ) ? liHeight - 1 : liPYp2 );
-        liPYp3 = liPY + 3; liPYp3 = ( ( liPYp3 >= liHeight ) ? liHeight - 1 : liPYp3 );
+        liPXm2 = liPX - li_Size_s( 2 ); liPXm2 = ( ( liPXm2 <  li_Size_s( 0 ) ) ? li_Size_s( 0 )            : liPXm2 );
+        liPXm1 = liPX - li_Size_s( 1 ); liPXm1 = ( ( liPXm1 <  li_Size_s( 0 ) ) ? li_Size_s( 0 )            : liPXm1 );
+        liPXp1 = liPX + li_Size_s( 1 );
+        liPXp2 = liPX + li_Size_s( 2 ); liPXp2 = ( ( liPXp2 >= liWidth  )       ? liWidth  - li_Size_s( 1 ) : liPXp2 );
+        liPXp3 = liPX + li_Size_s( 3 ); liPXp3 = ( ( liPXp3 >= liWidth  )       ? liWidth  - li_Size_s( 1 ) : liPXp3 );
+        liPYm2 = liPY - li_Size_s( 2 ); liPYm2 = ( ( liPYm2 <  li_Size_s( 0 ) ) ? li_Size_s( 0 )            : liPYm2 );
+        liPYm1 = liPY - li_Size_s( 1 ); liPYm1 = ( ( liPYm1 <  li_Size_s( 0 ) ) ? li_Size_s( 0 )            : liPYm1 );
+        liPYp1 = liPY + li_Size_s( 1 );
+        liPYp2 = liPY + li_Size_s( 2 ); liPYp2 = ( ( liPYp2 >= liHeight )       ? liHeight - li_Size_s( 1 ) : liPYp2 );
+        liPYp3 = liPY + li_Size_s( 3 ); liPYp3 = ( ( liPYp3 >= liHeight )       ? liHeight - li_Size_s( 1 ) : liPYp3 );
 
         /* Compute interpolation vector */
         liVS[ 0] = * ( liBytes + liLayer * ( liWidth * liPYm2 + liPXm2 ) + liChannel );
@@ -632,8 +632,8 @@
                    (      -5.0 / 14400.0 ) * liVS[34] + (       1.0 / 14400.0 ) * liVS[35];
 
         /* Prepare interpolated value computation */
-        liTX1 = ( liX + 2.0 ) - liPX; liTX2 = liTX1 * liTX1; liTX3 = liTX1 * liTX2; liTX4 = liTX2 * liTX2; liTX5 = liTX1 * liTX4;
-        liTY1 = ( liY + 2.0 ) - liPY; liTY2 = liTY1 * liTY1; liTY3 = liTY1 * liTY2; liTY4 = liTY2 * liTY2; liTY5 = liTY1 * liTY4;
+        liTX1 = ( liX + li_Real_s( 2.0 ) ) - liPX; liTX2 = liTX1 * liTX1; liTX3 = liTX1 * liTX2; liTX4 = liTX2 * liTX2; liTX5 = liTX1 * liTX4;
+        liTY1 = ( liY + li_Real_s( 2.0 ) ) - liPY; liTY2 = liTY1 * liTY1; liTY3 = liTY1 * liTY2; liTY4 = liTY2 * liTY2; liTY5 = liTY1 * liTY4;
 
         /* Compute interpolated value */
         liIV = liVC[ 0]                 + liVC[ 1] * liTY1         + liVC[ 2] * liTY2         + 
@@ -650,8 +650,8 @@
                liVC[33] * liTY3 * liTX5 + liVC[34] * liTY4 * liTX5 + liVC[35] * liTY5 * liTX5;
 
         /* Verify interpolated value */
-        liIV = ( liIV <   0.0 ) ?   0.0 : liIV; 
-        liIV = ( liIV > 255.0 ) ? 255.0 : liIV;
+        liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
+        liIV = ( liIV > li_Real_s( 255.0 ) ) ? li_Real_s( 255.0 ) : liIV;
 
         /* Return interpolated value */
         return( liIV );

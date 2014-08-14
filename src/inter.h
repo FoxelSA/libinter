@@ -103,32 +103,7 @@
     Header - Preprocessor macros
  */
 
-    /* Ascending compatibility alias - Ensured until v1.0 */
-    # define inter_C8_t     li_C8_t
-    # define inter_Index_t  li_Size_t
-    # define inter_Real_t   li_Real_t
-    # define inter_Method_t li_Method_t
-
-/* 
-    Header - Typedefs
- */
-
-    /* Define pixel component type */
-    typedef uint8_t li_C8_t;
-
-    /* Define general index */
-    typedef int64_t li_Size_t;
-
-    /* Define general enumeration */
-    typedef int64_t li_Enum_t;
-
-    /* Define floating type */
-    typedef double li_Real_t;
-
-    /* General interpolation method prototype */
-    typedef li_C8_t ( * li_Method_t ) ( li_C8_t * , li_Size_t , li_Size_t , li_Size_t , li_Size_t , li_Real_t , li_Real_t );
-
-    /* Define literal suffix */
+    /* Define litteral suffix */
     # define li_C8_s( x )    UINT8_C( x )
     # define li_Size_s( x )  INT64_C( x )
     # define li_Enum_s( x )  INT64_C( x )
@@ -145,6 +120,28 @@
     # define li_Size_i       SCNu64
     # define li_Enum_i       SCNu64
     # define li_Real_i       "lf"
+
+    /* Define floating point operator */
+    # define li_Trunc( x )  trunc( x )
+
+/* 
+    Header - Typedefs
+ */
+
+    /* Define pixel component type */
+    typedef uint8_t li_C8_t;
+
+    /* Define general index */
+    typedef int64_t li_Size_t;
+
+    /* Define general enumeration */
+    typedef int64_t li_Enum_t;
+
+    /* Define floating type */
+    typedef double  li_Real_t;
+
+    /* General interpolation method prototype */
+    typedef li_C8_t ( * li_Method_t ) ( li_C8_t * , li_Size_t , li_Size_t , li_Size_t , li_Size_t , li_Real_t , li_Real_t );
 
 /* 
     Header - Structures

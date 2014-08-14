@@ -75,6 +75,17 @@
     Header - Preprocessor macros
  */
 
+    /* Ascending compatibility - Functions */
+    # define inter_bicubicf     li_bicubicf     /* Beta 0.2 */
+    # define inter_bilinearf    li_bilinearf    /* Beta 0.2 */
+    # define inter_bipenticf    li_bipenticf    /* Beta 0.2 */
+
+    /* Ascending compatibility - Types */
+    # define inter_C8_t         li_C8_t         /* Beta 0.2 */
+    # define inter_Index_t      li_Size_t       /* Beta 0.2 */
+    # define inter_Real_t       li_Real_t       /* Beta 0.2 */
+    # define inter_Method_t     li_Method_t     /* Beta 0.2 */
+
 /* 
     Header - Typedefs
  */
