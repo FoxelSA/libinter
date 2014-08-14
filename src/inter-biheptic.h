@@ -36,18 +36,18 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
-    /*! \file   inter-all.h
+    /*! \file   inter-biheptic.h
      *  \author Nils Hamel (n.hamel@foxel.ch)
      *
-     *  Library general includer
+     *  Biheptic C(0) class interpolation methods
      */
 
 /* 
     Header - Include guard
  */
 
-    # ifndef __LI_ALL__
-    # define __LI_ALL__
+    # ifndef __LI_BIHEPTIC__
+    # define __LI_BIHEPTIC__
 
 /* 
     Header - C/C++ compatibility
@@ -62,11 +62,6 @@
  */
 
     # include "inter.h"
-    # include "inter-cubic.h"
-    # include "inter-bilinear.h"
-    # include "inter-bicubic.h"
-    # include "inter-bipentic.h"
-    # include "inter-biheptic.h"
 
 /* 
     Header - Preprocessor definitions
@@ -75,17 +70,6 @@
 /* 
     Header - Preprocessor macros
  */
-
-    /* Ascending compatibility - Functions */
-    # define inter_bicubicf     li_bicubicf     /* Beta 0.2 */
-    # define inter_bilinearf    li_bilinearf    /* Beta 0.2 */
-    # define inter_bipenticf    li_bipenticf    /* Beta 0.2 */
-
-    /* Ascending compatibility - Types */
-    # define inter_C8_t         li_C8_t         /* Beta 0.2 */
-    # define inter_Index_t      li_Size_t       /* Beta 0.2 */
-    # define inter_Real_t       li_Real_t       /* Beta 0.2 */
-    # define inter_Method_t     li_Method_t     /* Beta 0.2 */
 
 /* 
     Header - Typedefs
@@ -99,12 +83,41 @@
     Header - Function prototypes
  */
 
+    /*! \brief Fast bipentic interpolation method
+
+     *  This function performe an order eight fast biheptic interpolation of bitmap 
+     *  pixels based on bm bitmap. The value of floating point coordinates have to 
+     *  be in the [0,liWidth-1[ × [0,liHeight-1[ range. This last condition is not
+     *  verified by the function.
+     *  
+     *  \param liBytes Pointer to bitmap array
+     *  \param liWidth Bitmap width
+     *  \param liHeight Bitmap height
+     *  \param liLayer Bitmap number of chromatic layer
+     *  \param liChannel Bitmap interpolated layer
+     *  \param liX Interpolated point position x (floating point)
+     *  \param liY Interpolated point position y (floating point)
+     *  \return Interpolated value
+     */
+
+    li_C8_t li_bihepticf(
+
+        li_C8_t * liBytes, 
+        li_Size_t liWidth,
+        li_Size_t liHeight,
+        li_Size_t liLayer, 
+        li_Size_t liChannel,
+        li_Real_t liX,
+        li_Real_t liY
+
+    );
+
 /* 
     Header - C/C++ compatibility
  */
 
     # ifdef __cplusplus
-    }
+    } 
     # endif
 
 /*

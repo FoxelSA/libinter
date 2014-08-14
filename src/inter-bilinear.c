@@ -91,7 +91,10 @@
         liVC[3] = + liVS[0] - liVS[1] - liVS[2] + liVS[3];
 
         /* Compute interpolated value */
-        liIV = liVC[0] + liVC[1] * liTY + liVC[2] * liTX + liVC[3] * liTX * liTY;
+        liIV = liVC[0]               + 
+               liVC[1] * liTY        + 
+               liVC[2] * liTX        + 
+               liVC[3] * liTX * liTY;
 
         /* Verify interpolated value */
         liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
