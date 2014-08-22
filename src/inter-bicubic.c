@@ -137,11 +137,7 @@
         liVC[ 4] = ( li_Real_s(  -66.0 ) / li_Real_s(   36.0 ) ) * liVS[ 0] +
                    ( li_Real_s(  108.0 ) / li_Real_s(   36.0 ) ) * liVS[ 1] +
                    ( li_Real_s(  -54.0 ) / li_Real_s(   36.0 ) ) * liVS[ 2] +
-                   ( li_Real_s(   12.0 ) / li_Real_s(   36.0 ) ) * liVS[ 3] +
-                   ( li_Real_s(   -0.0 ) / li_Real_s(   36.0 ) ) * liVS[ 4] +
-                   ( li_Real_s(    0.0 ) / li_Real_s(   36.0 ) ) * liVS[ 7] +
-                   ( li_Real_s(    0.0 ) / li_Real_s(   36.0 ) ) * liVS[12] +
-                   ( li_Real_s(   -0.0 ) / li_Real_s(   36.0 ) ) * liVS[15];
+                   ( li_Real_s(   12.0 ) / li_Real_s(   36.0 ) ) * liVS[ 3];
         liVC[ 5] = ( li_Real_s(  121.0 ) / li_Real_s(   36.0 ) ) * liVS[ 0] +
                    ( li_Real_s( -198.0 ) / li_Real_s(   36.0 ) ) * liVS[ 1] +
                    ( li_Real_s(   99.0 ) / li_Real_s(   36.0 ) ) * liVS[ 2] +
