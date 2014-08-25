@@ -78,11 +78,14 @@
         liPX = li_Trunc( liX ); liTX = liX - liPX;
         liPY = li_Trunc( liY ); liTY = liY - liPY;
 
+        /* Compute memory width */
+        liWidth *= liLayer; if ( liWidth % li_Size_s( 4 ) ) liWidth += li_Size_s( 4 ) - liWidth % li_Size_s( 4 );
+
         /* Compute interpolation vector */
-        liVS[0] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX     ) ) + liChannel );
-        liVS[1] = * ( liBytes + liLayer * ( liWidth * ( liPY ++ ) + ( liPX + 1 ) ) + liChannel );
-        liVS[2] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX     ) ) + liChannel );
-        liVS[3] = * ( liBytes + liLayer * ( liWidth * ( liPY    ) + ( liPX + 1 ) ) + liChannel );
+        liVS[0] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX     ) + liChannel );
+        liVS[1] = * ( liBytes + liWidth * ( liPY ++ ) + liLayer * ( liPX + 1 ) + liChannel );
+        liVS[2] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX     ) + liChannel );
+        liVS[3] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX + 1 ) + liChannel );
 
         /* Compute interpolation matrix product */
         liVC[0] = + liVS[0];

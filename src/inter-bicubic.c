@@ -102,23 +102,26 @@
         liPXp2 = liPX + li_Size_s( 2 ); liPXp2 = ( ( liPXp2 >= liWidth  ) ? liWidth  - li_Size_s( 1 ) : liPXp2 );
         liPYp2 = liPY + li_Size_s( 2 ); liPYp2 = ( ( liPYp2 >= liHeight ) ? liHeight - li_Size_s( 1 ) : liPYp2 );
 
+        /* Compute memory width */
+        liWidth *= liLayer; if ( liWidth % li_Size_s( 4 ) ) liWidth += li_Size_s( 4 ) - liWidth % li_Size_s( 4 );
+
         /* Compute interpolation vector */
-        liVS[ 0] = * ( liBytes + liLayer * ( liWidth * liPYm1 + liPXm1 ) + liChannel );
-        liVS[ 1] = * ( liBytes + liLayer * ( liWidth * liPYm1 + liPX   ) + liChannel );
-        liVS[ 2] = * ( liBytes + liLayer * ( liWidth * liPYm1 + liPXp1 ) + liChannel );
-        liVS[ 3] = * ( liBytes + liLayer * ( liWidth * liPYm1 + liPXp2 ) + liChannel );
-        liVS[ 4] = * ( liBytes + liLayer * ( liWidth * liPY   + liPXm1 ) + liChannel );
-        liVS[ 5] = * ( liBytes + liLayer * ( liWidth * liPY   + liPX   ) + liChannel );
-        liVS[ 6] = * ( liBytes + liLayer * ( liWidth * liPY   + liPXp1 ) + liChannel );
-        liVS[ 7] = * ( liBytes + liLayer * ( liWidth * liPY   + liPXp2 ) + liChannel );
-        liVS[ 8] = * ( liBytes + liLayer * ( liWidth * liPYp1 + liPXm1 ) + liChannel );
-        liVS[ 9] = * ( liBytes + liLayer * ( liWidth * liPYp1 + liPX   ) + liChannel );
-        liVS[10] = * ( liBytes + liLayer * ( liWidth * liPYp1 + liPXp1 ) + liChannel );
-        liVS[11] = * ( liBytes + liLayer * ( liWidth * liPYp1 + liPXp2 ) + liChannel );
-        liVS[12] = * ( liBytes + liLayer * ( liWidth * liPYp2 + liPXm1 ) + liChannel );
-        liVS[13] = * ( liBytes + liLayer * ( liWidth * liPYp2 + liPX   ) + liChannel );
-        liVS[14] = * ( liBytes + liLayer * ( liWidth * liPYp2 + liPXp1 ) + liChannel );
-        liVS[15] = * ( liBytes + liLayer * ( liWidth * liPYp2 + liPXp2 ) + liChannel );
+        liVS[ 0] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXm1 + liChannel );
+        liVS[ 1] = * ( liBytes + liWidth * liPYm1 + liLayer * liPX   + liChannel );
+        liVS[ 2] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp1 + liChannel );
+        liVS[ 3] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp2 + liChannel );
+        liVS[ 4] = * ( liBytes + liWidth * liPY   + liLayer * liPXm1 + liChannel );
+        liVS[ 5] = * ( liBytes + liWidth * liPY   + liLayer * liPX   + liChannel );
+        liVS[ 6] = * ( liBytes + liWidth * liPY   + liLayer * liPXp1 + liChannel );
+        liVS[ 7] = * ( liBytes + liWidth * liPY   + liLayer * liPXp2 + liChannel );
+        liVS[ 8] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXm1 + liChannel );
+        liVS[ 9] = * ( liBytes + liWidth * liPYp1 + liLayer * liPX   + liChannel );
+        liVS[10] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp1 + liChannel );
+        liVS[11] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp2 + liChannel );
+        liVS[12] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXm1 + liChannel );
+        liVS[13] = * ( liBytes + liWidth * liPYp2 + liLayer * liPX   + liChannel );
+        liVS[14] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXp1 + liChannel );
+        liVS[15] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXp2 + liChannel );
 
         /* Compute interpolation matrix product */
         liVC[ 0] = ( li_Real_s(   36.0 ) / li_Real_s(   36.0 ) ) * liVS[ 0];
