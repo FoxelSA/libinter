@@ -37,7 +37,7 @@
  */
 
     /*! \file   inter.h
-     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *  \author Nils Hamel <n.hamel@foxel.ch>
      *
      *  Library common header file
      */
@@ -103,26 +103,32 @@
     Header - Preprocessor macros
  */
 
+    /* Define casting macro */
+    # define li_C8_c( x )       ( ( li_C8_t ) x )
+    # define li_Size_c( x )     ( ( li_Size_t ) x )
+    # define li_Enum_c( x )     ( ( li_Enum_t ) x )
+    # define li_Real_c( x )     ( ( li_Real_t ) x )
+
     /* Define litteral suffix */
-    # define li_C8_s( x )    UINT8_C( x )
-    # define li_Size_s( x )  INT64_C( x )
-    # define li_Enum_s( x )  INT64_C( x )
-    # define li_Real_s( x )  ( x )
+    # define li_C8_s( x )       UINT8_C( x )
+    # define li_Size_s( x )     INT64_C( x )
+    # define li_Enum_s( x )     INT64_C( x )
+    # define li_Real_s( x )     ( x )
 
     /* Define formated output specifiers */
-    # define li_C8_p         PRIu8
-    # define li_Size_p       PRId64
-    # define li_Enum_p       PRId64
-    # define li_Real_p       "lf"
+    # define li_C8_p            PRIu8
+    # define li_Size_p          PRId64
+    # define li_Enum_p          PRId64
+    # define li_Real_p          "lf"
 
     /* Define formated input specifiers */
-    # define li_C8_i         SCNu8
-    # define li_Size_i       SCNu64
-    # define li_Enum_i       SCNu64
-    # define li_Real_i       "lf"
+    # define li_C8_i            SCNu8
+    # define li_Size_i          SCNu64
+    # define li_Enum_i          SCNu64
+    # define li_Real_i          "lf"
 
-    /* Define floating point operator */
-    # define li_Trunc( x )  trunc( x )
+    /* Define floating point operators */
+    # define li_Trunc( x )      trunc( x )
 
 /* 
     Header - Typedefs

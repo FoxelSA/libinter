@@ -37,7 +37,7 @@
  */
 
     /*! \file   inter-cubic.h
-     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *  \author Nils Hamel <n.hamel@foxel.ch>
      *
      *  Cubic C(1) class interpolation methods
      */
@@ -89,14 +89,15 @@
 
     /*! \brief Elementary cubic interpolation
      *  
-     *  This function return the interpolated value defined by a cubic interpolant. The
+     *  The function return the interpolated value defined by a cubic interpolant. The
      *  interpolant is computed considering the cubic function that intercept the points
-     *  defined by (liX1,liY1) and (liX2,liY2). The two last degree of liberty are filled
+     *  defined by (liX1,liY1) and (liX2,liY2). The two last degrees of liberty are filled
      *  considering the derivatives at the liX1 and liX2 point given by liDX1 and liDX2,
      *  respectively.
      *  
-     *  If the liFlag is set, the interpolant coefficient are recomputed. Otherwise, the
-     *  previously computed coefficient are considered.
+     *  If the liFlag is set, the interpolant coefficients are computed. Otherwise, the
+     *  previously computed coefficient are considered in order to improve function 
+     *  performances.
      *  
      *  \param liFlag Cubic coefficient computation flag
      *  \param liX Interpolated value absciss

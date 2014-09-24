@@ -37,7 +37,7 @@
  */
 
     /*! \file   inter-all.h
-     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *  \author Nils Hamel <n.hamel@foxel.ch>
      *
      *  Library general includer
      */
@@ -62,11 +62,11 @@
  */
 
     # include "inter.h"
-    # include "inter-cubic.h"
-    # include "inter-bilinear.h"
     # include "inter-bicubic.h"
-    # include "inter-bipentic.h"
     # include "inter-biheptic.h"
+    # include "inter-bilinear.h"
+    # include "inter-bipentic.h"
+    # include "inter-cubic.h"
 
 /* 
     Header - Preprocessor definitions
@@ -77,15 +77,15 @@
  */
 
     /* Ascending compatibility - Functions */
-    # define inter_bicubicf     li_bicubicf     /* Beta 0.2 */
-    # define inter_bilinearf    li_bilinearf    /* Beta 0.2 */
-    # define inter_bipenticf    li_bipenticf    /* Beta 0.2 */
+    # define inter_bicubicf     li_bicubicf     /* Defined under beta 0.2 */
+    # define inter_bilinearf    li_bilinearf    /* Defined under beta 0.2 */
+    # define inter_bipenticf    li_bipenticf    /* Defined under beta 0.2 */
 
     /* Ascending compatibility - Types */
-    # define inter_C8_t         li_C8_t         /* Beta 0.2 */
-    # define inter_Index_t      li_Size_t       /* Beta 0.2 */
-    # define inter_Real_t       li_Real_t       /* Beta 0.2 */
-    # define inter_Method_t     li_Method_t     /* Beta 0.2 */
+    # define inter_C8_t         li_C8_t         /* Defined under beta 0.2 */
+    # define inter_Index_t      li_Size_t       /* Defined under beta 0.2 */
+    # define inter_Real_t       li_Real_t       /* Defined under beta 0.2 */
+    # define inter_Method_t     li_Method_t     /* Defined under beta 0.2 */
 
 /* 
     Header - Typedefs

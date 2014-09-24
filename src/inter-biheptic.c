@@ -44,7 +44,7 @@
     # include "inter-bipentic.h"
 
 /*
-    Source - Fast bipentic interpolation method
+    Source - Fast biheptic image pixel interpolation method
  */
 
     li_C8_t li_bihepticf(
@@ -59,7 +59,7 @@
 
     ) {
 
-        /* Interpolation vectors */
+        /* Interpolation vectors variables */
         li_Real_t liVS[64] = { li_Real_s( 0.0 ) };
         li_Real_t liVC[64] = { li_Real_s( 0.0 ) };
 
@@ -102,7 +102,7 @@
         /* Interpolated variables */
         li_Real_t liIV = li_Real_s( 0.0 );
 
-        /* Compute relatliIVe grid parameters */
+        /* Compute relatlive grid parameters */
         liPX = li_Trunc( liX );
         liPY = li_Trunc( liY );
 
@@ -3921,11 +3921,20 @@
                liVC[63] * liTY7 * liTX7;
 
         /* Verify interpolated value */
-        liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
-        liIV = ( liIV > li_Real_s( 255.0 ) ) ? li_Real_s( 255.0 ) : liIV;
+        if ( liIV < li_Real_s( 0.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 0.0 );
+
+        } else if ( liIV > li_Real_s( 255.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 255.0 );
+
+        }
 
         /* Return interpolated value */
-        return( liIV );
+        return( li_C8_c( liIV ) );
 
     }
 

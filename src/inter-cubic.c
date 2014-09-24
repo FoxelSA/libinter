@@ -64,7 +64,7 @@
         static li_Real_t liA = li_Real_s( 0.0 );
         static li_Real_t liB = li_Real_s( 0.0 );
 
-        /* Check cubic coefficient flag */
+        /* Verify cubic coefficient flag */
         if ( liFlag == LI_CUBIC_FLAG_SET ) {
 
             /* Compute cubic coefficients */
@@ -73,10 +73,10 @@
 
         }
 
-        /* Compute interpolation parameter */
+        /* Compute normalized interpolation parameter */
         liX = ( liX - liX1 ) / ( liX2 - liX1 );
 
-        /* Compute interpolated value */
+        /* Compute and return interpolated value */
         return( ( ( li_Real_s( 1.0 ) - liX ) * liY1 ) + ( liX * liY2 ) + ( liX * ( li_Real_s( 1.0 ) - liX ) ) * ( liA * ( li_Real_s( 1.0 ) - liX ) + liB * liX ) );
 
     }

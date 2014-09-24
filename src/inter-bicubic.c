@@ -44,7 +44,7 @@
     # include "inter-bicubic.h"
 
 /*
-    Source - Fast bicubic interpolation method
+    Source - Fast bicubic image pixel interpolation method
  */
 
     li_C8_t li_bicubicf(
@@ -59,7 +59,7 @@
 
     ) {
 
-        /* Interpolation vectors */
+        /* Interpolation vectors variables */
         li_Real_t liVS[16] = { li_Real_s( 0.0 ) };
         li_Real_t liVC[16] = { li_Real_s( 0.0 ) };
 
@@ -86,7 +86,7 @@
         /* Interpolated variables */
         li_Real_t liIV = li_Real_s( 0.0 );
 
-        /* Compute relatliIVe grid parameters */
+        /* Compute relative grid parameters */
         liPX = li_Trunc( liX );
         liPY = li_Trunc( liY );
 
@@ -303,21 +303,38 @@
         liTY3 = liTY1 * liTY2;
 
         /* Compute interpolated value */
-        liIV = liVC[ 0]                 + liVC[ 1] * liTY1         + 
-               liVC[ 2] * liTY2         + liVC[ 3] * liTY3         +
-               liVC[ 4] * liTX1         + liVC[ 5] * liTY1 * liTX1 + 
-               liVC[ 6] * liTY2 * liTX1 + liVC[ 7] * liTY3 * liTX1 +
-               liVC[ 8] * liTX2         + liVC[ 9] * liTY1 * liTX2 + 
-               liVC[10] * liTY2 * liTX2 + liVC[11] * liTY3 * liTX2 +
-               liVC[12] * liTX3         + liVC[13] * liTY1 * liTX3 + 
-               liVC[14] * liTY2 * liTX3 + liVC[15] * liTY3 * liTX3;
+        liIV = liVC[ 0]                 + 
+               liVC[ 1] * liTY1         + 
+               liVC[ 2] * liTY2         + 
+               liVC[ 3] * liTY3         +
+               liVC[ 4] * liTX1         + 
+               liVC[ 5] * liTY1 * liTX1 + 
+               liVC[ 6] * liTY2 * liTX1 + 
+               liVC[ 7] * liTY3 * liTX1 +
+               liVC[ 8] * liTX2         + 
+               liVC[ 9] * liTY1 * liTX2 + 
+               liVC[10] * liTY2 * liTX2 + 
+               liVC[11] * liTY3 * liTX2 +
+               liVC[12] * liTX3         + 
+               liVC[13] * liTY1 * liTX3 + 
+               liVC[14] * liTY2 * liTX3 + 
+               liVC[15] * liTY3 * liTX3;
 
         /* Verify interpolated value */
-        liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
-        liIV = ( liIV > li_Real_s( 255.0 ) ) ? li_Real_s( 255.0 ) : liIV;
+        if ( liIV < li_Real_s( 0.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 0.0 );
+
+        } else if ( liIV > li_Real_s( 255.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 255.0 );
+
+        }
 
         /* Return interpolated value */
-        return( liIV );
+        return( li_C8_c( liIV ) );
 
     }
 

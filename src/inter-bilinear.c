@@ -44,7 +44,7 @@
     # include "inter-bilinear.h"
 
 /*
-    Source - Fast bilinear interpolation method
+    Source - Fast bilinear image pixel interpolation method
  */
 
     li_C8_t li_bilinearf(
@@ -59,7 +59,7 @@
 
     ) {
 
-        /* Interpolation vectors */
+        /* Interpolation vectors variables */
         li_Real_t liVS[4] = { li_Real_s( 0.0 ) };
         li_Real_t liVC[4] = { li_Real_s( 0.0 ) };
 
@@ -74,7 +74,7 @@
         /* Interpolated variables */
         li_Real_t liIV = li_Real_s( 0.0 );
 
-        /* Compute relatliIVe grid parameters */
+        /* Compute relatlive grid parameters */
         liPX = li_Trunc( liX ); liTX = liX - liPX;
         liPY = li_Trunc( liY ); liTY = liY - liPY;
 
@@ -100,8 +100,17 @@
                liVC[3] * liTX * liTY;
 
         /* Verify interpolated value */
-        liIV = ( liIV < li_Real_s(   0.0 ) ) ? li_Real_s(   0.0 ) : liIV; 
-        liIV = ( liIV > li_Real_s( 255.0 ) ) ? li_Real_s( 255.0 ) : liIV;
+        if ( liIV < li_Real_s( 0.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 0.0 );
+
+        } else if ( liIV > li_Real_s( 255.0 ) ) {
+
+            /* Clamp interpolated value */
+            liIV = li_Real_s( 255.0 );
+
+        }
 
         /* Return interpolated value */
         return( liIV );

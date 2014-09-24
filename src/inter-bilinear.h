@@ -37,7 +37,7 @@
  */
 
     /*! \file   inter-bilinear.h
-     *  \author Nils Hamel (n.hamel@foxel.ch)
+     *  \author Nils Hamel <n.hamel@foxel.ch>
      *
      *  Bilinear C(0) class interpolation methods
      */
@@ -85,15 +85,15 @@
 
     /*! \brief Fast bilinear interpolation method
      *  
-     *  This function performe an order two fast bilinear interpolation of bitmap 
-     *  pixels based on bm bitmap. The value of floating point coordinates have to 
-     *  be in the [0,liWidth-1[ × [0,liHeight-1[ range. This last condition is not
-     *  verified by the function.
+     *  The function performs an order two fast bilinear interpolation of bitmap 
+     *  pixels based on bitmap pointed by liBytes. The value of floating point
+     *  coordinates have to be in the [0,liWidth-1[ × [0,liHeight-1[ range. This
+     *  last condition is not verified by the function.
      *  
-     *  \param liBytes Pointer to bitmap array
-     *  \param liWidth Bitmap width
-     *  \param liHeight Bitmap height
-     *  \param liLayer Bitmap number of chromatic layer
+     *  \param liBytes Pointer to bitmap
+     *  \param liWidth Bitmap width, in pixels
+     *  \param liHeight Bitmap height, in pixels
+     *  \param liLayer Bitmap number of chromatic layers
      *  \param liChannel Bitmap interpolated layer
      *  \param liX Interpolated point position x (floating point)
      *  \param liY Interpolated point position y (floating point)
