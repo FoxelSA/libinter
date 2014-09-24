@@ -67,10 +67,12 @@ endif
     MAKE_DEPENDS:=$(foreach LIB, $(MAKE_INCLUDE), $(if $(findstring /lib/, $(LIB) ), , $(LIB) ) )
 
 #
-#   make - Build - Default
+#   make - Build - Targets
 #
 
     all:directories libraries $(MAKE_NAME)
+    build:directories $(MAKE_NAME)
+    modules:libraries
 
 #
 #   make - Build - Binaries
