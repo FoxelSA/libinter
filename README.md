@@ -6,8 +6,7 @@ The libinter library is dedicated to interpolation methods. The provided interpo
 
 ### Documentation
 
-Find more documentation on the [wiki](https://github.com/FoxelSA/libinter/wiki).
-
+A detailed documentation can be generated through doxygen. A more general documentation can be consulted on the [wiki](https://github.com/FoxelSA/libinter/wiki).
 
 ### Copyright
 
