@@ -89,37 +89,38 @@
 
     /*! \brief Elementary cubic interpolation
      *  
-     *  The function return the interpolated value defined by a cubic interpolant. The
-     *  interpolant is computed considering the cubic function that intercept the points
-     *  defined by (liX1,liY1) and (liX2,liY2). The two last degrees of liberty are filled
-     *  considering the derivatives at the liX1 and liX2 point given by liDX1 and liDX2,
-     *  respectively.
+     *  The function returns the interpolated value by a cubic interpolant. The
+     *  interpolant is computed considering the cubic function that intercept
+     *  the points defined by (liX1,liY1) and (liX2,liY2). The two last degrees
+     *  of liberty are filled considering the derivatives at the liX1 and liX2
+     *  point given by liDX1 and liDX2, respectively.
      *  
-     *  If the liFlag is set, the interpolant coefficients are computed. Otherwise, the
-     *  previously computed coefficient are considered in order to improve function 
-     *  performances.
+     *  If the liFlag is set, the interpolant coefficients are computed befor
+     *  interpolation. Otherwise, the previously computed coefficients are 
+     *  considered in order to improve function performances.
      *  
      *  \param liFlag Cubic coefficient computation flag
-     *  \param liX Interpolated value absciss
-     *  \param liX1 Cubic interpolant control point absciss
-     *  \param liY1 Cubic interpolant control point ordinate
-     *  \param liX2 Cubic interpolant control point absciss
-     *  \param liY2 Cubic interpolant control point ordinate
-     *  \param liDX1 Cubic interpolant derivative at liX1 absciss
-     *  \param liDX2 Cubic interpolant derivative at liX2 absciss
-     *  \return Interpolated value
+     *  \param liX    Interpolated value absciss
+     *  \param liX1   Cubic interpolant control point absciss
+     *  \param liY1   Cubic interpolant control point ordinate
+     *  \param liX2   Cubic interpolant control point absciss
+     *  \param liY2   Cubic interpolant control point ordinate
+     *  \param liDX1  Cubic interpolant derivative at liX1 absciss
+     *  \param liDX2  Cubic interpolant derivative at liX2 absciss
+     *  
+     *  \return Returns interpolated value
      */
 
     li_Real_t li_cubic( 
 
-        li_Enum_t liFlag,
-        li_Real_t liX,
-        li_Real_t liX1,
-        li_Real_t liX2,
-        li_Real_t liY1,
-        li_Real_t liY2,
-        li_Real_t liDX1,
-        li_Real_t liDX2
+        li_Enum_t const liFlag,
+        li_Real_t       liX,
+        li_Real_t const liX1,
+        li_Real_t const liX2,
+        li_Real_t const liY1,
+        li_Real_t const liY2,
+        li_Real_t const liDX1,
+        li_Real_t const liDX2
 
     );
 

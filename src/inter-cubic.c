@@ -49,14 +49,14 @@
 
     li_Real_t li_cubic( 
 
-        li_Enum_t liFlag,
-        li_Real_t liX,
-        li_Real_t liX1,
-        li_Real_t liX2,
-        li_Real_t liY1,
-        li_Real_t liY2,
-        li_Real_t liDX1,
-        li_Real_t liDX2
+        li_Enum_t const liFlag,
+        li_Real_t       liX,
+        li_Real_t const liX1,
+        li_Real_t const liX2,
+        li_Real_t const liY1,
+        li_Real_t const liY2,
+        li_Real_t const liDX1,
+        li_Real_t const liDX2
 
     ) {
 

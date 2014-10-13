@@ -49,13 +49,13 @@
 
     li_C8_t li_bicubicf(
 
-        li_C8_t * liBytes, 
-        li_Size_t liWidth,
-        li_Size_t liHeight,
-        li_Size_t liLayer, 
-        li_Size_t liChannel,
-        li_Real_t liX,
-        li_Real_t liY
+        li_C8_t   const * const liBytes, 
+        li_Size_t               liWidth,
+        li_Size_t const         liHeight,
+        li_Size_t const         liLayer, 
+        li_Size_t const         liChannel,
+        li_Real_t const         liX,
+        li_Real_t const         liY
 
     ) {
 

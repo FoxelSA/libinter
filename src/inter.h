@@ -65,12 +65,13 @@
      *
      *  \section License
      *
-     *  This program is licensed under the terms of the GNU Affero General Public License
-     *  v3 (GNU AGPL), with two additional terms. The content is licensed under the terms 
-     *  of the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA) license.
+     *  This program is licensed under the terms of the GNU Affero General Public
+     *  License v3 (GNU AGPL), with two additional terms. The content is licensed
+     *  under the terms of the Creative Commons Attribution-ShareAlike 4.0 
+     *  International (CC BY-SA) license.
      *
-     *  You must read <http://foxel.ch/license> for more information about our Licensing
-     *  terms and our Usage and Attribution guidelines.
+     *  You must read <http://foxel.ch/license> for more information about our
+     *  Licensing terms and our Usage and Attribution guidelines.
      */
 
 /* 
@@ -147,7 +148,17 @@
     typedef double  li_Real_t;
 
     /* General interpolation method prototype */
-    typedef li_C8_t ( * li_Method_t ) ( li_C8_t * , li_Size_t , li_Size_t , li_Size_t , li_Size_t , li_Real_t , li_Real_t );
+    typedef li_C8_t ( * li_Method_t ) ( 
+
+        li_C8_t const * const, 
+        li_Size_t, 
+        li_Size_t const, 
+        li_Size_t const, 
+        li_Size_t const, 
+        li_Real_t const, 
+        li_Real_t const
+
+    );
 
 /* 
     Header - Structures

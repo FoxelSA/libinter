@@ -85,30 +85,31 @@
 
     /*! \brief Fast bipentic interpolation method
 
-     *  The functions performs an order eight fast biheptic interpolation of bitmap 
-     *  pixels based on bitmap pointed by liBytes. The value of floating point
-     *  coordinates have to  be in the [0,liWidth-1[ × [0,liHeight-1[ range. This
-     *  last condition is not verified by the function.
+     *  The functions performs an order eight fast biheptic interpolation of 
+     *  bitmap pixels based on bitmap pointed by liBytes. The value of floating
+     *  point coordinates have to be in the [0,liWidth-1[ × [0,liHeight-1[
+     *  range. This last condition is not verified by the function.
      *  
-     *  \param liBytes Pointer to bitmap
-     *  \param liWidth Bitmap width, in pixels
-     *  \param liHeight Bitmap height, in pixels
-     *  \param liLayer Bitmap number of chromatic layers
+     *  \param liBytes   Pointer to bitmap
+     *  \param liWidth   Bitmap width, in pixels
+     *  \param liHeight  Bitmap height, in pixels
+     *  \param liLayer   Bitmap number of chromatic layers
      *  \param liChannel Bitmap interpolated layer
-     *  \param liX Interpolated point position x (floating point)
-     *  \param liY Interpolated point position y (floating point)
-     *  \return Interpolated value
+     *  \param liX       Interpolated point position x
+     *  \param liY       Interpolated point position y
+     *  
+     *  \return Returns interpolated value
      */
 
     li_C8_t li_bihepticf(
 
-        li_C8_t * liBytes, 
-        li_Size_t liWidth,
-        li_Size_t liHeight,
-        li_Size_t liLayer, 
-        li_Size_t liChannel,
-        li_Real_t liX,
-        li_Real_t liY
+        li_C8_t   const * const liBytes, 
+        li_Size_t               liWidth,
+        li_Size_t const         liHeight,
+        li_Size_t const         liLayer, 
+        li_Size_t const         liChannel,
+        li_Real_t const         liX,
+        li_Real_t const         liY
 
     );
 
