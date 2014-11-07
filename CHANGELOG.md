@@ -1,6 +1,6 @@
 ## Changelog
 
-### Beta 0.3 (master)
+### Beta 0.3 (master) (Release 0.3 not scheduled)
 
 ### Release 0.2 (September 24, 2014)
 
