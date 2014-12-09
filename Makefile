@@ -164,7 +164,7 @@ endif
 	$(MAKE_CMRMFL) $(MAKE_BINARY)/* $(MAKE_OBJECT)/*.o
 
     make-clean-modules:
-	@$(foreach LIBS, $(MAKE_MODULE), $(MAKE) -C $(LIBS) clean && ) true
+	@$(foreach LIBS, $(MAKE_MODULE), $(MAKE) -C $(LIBS) clean-all && ) true
 
     make-clean-documentation:
 	$(MAKE_CMRMDR) $(MAKE_DOCUME)/html
