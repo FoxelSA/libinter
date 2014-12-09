@@ -105,11 +105,19 @@ endif
 
 ifeq ($(CONFIG_TYPE),suite)
     all:make-directories $(CONFIG_NAME)
+    build:all
+    modules:
     clean:make-clean
+    clean-all:clean
+    clean-modules:
 else
 ifeq ($(CONFIG_TYPE),libcommon)
     all:make-directories $(CONFIG_NAME)
+    build:all
+    modules:
     clean:make-clean
+    clean-all:clean
+    clean-modules:
 else
     all:make-directories make-modules $(CONFIG_NAME)
     build:make-directories $(CONFIG_NAME)
