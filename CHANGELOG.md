@@ -1,6 +1,6 @@
 ## Changelog
 
-### Beta 0.2.1
+### Release 0.2.1 (January 8, 2015)
 
 `Revised` : Improvement of function prototypes
 
