@@ -1,5 +1,9 @@
 ## Changelog
 
+### Beta 0.2.1
+
+`Revised` : Improvement of function prototypes
+
 ### Release 0.2 (September 24, 2014)
 
 `Revised` : **li\_bipenticf** function order six method coefficient recomputation
