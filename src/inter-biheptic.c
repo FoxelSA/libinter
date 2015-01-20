@@ -79,9 +79,11 @@
         li_Real_t liTX7 = li_Real_s( 0.0 );
         li_Real_t liTY7 = li_Real_s( 0.0 );
 
-        /* Interpolation variables */
-        li_Size_t liPX = li_Size_s( 0 );
-        li_Size_t liPY = li_Size_s( 0 );
+        /* Interpolation reference variables */
+        li_Size_t liPXrf = li_Size_s( 0 );
+        li_Size_t liPYrf = li_Size_s( 0 );
+        li_Size_t liPXmm = li_Size_s( 0 );
+        li_Size_t liPYmm = li_Size_s( 0 );
 
         /* Sampling variables */
         li_Size_t liPXm3 = li_Size_s( 0 );
@@ -103,28 +105,280 @@
         li_Real_t liIV = li_Real_s( 0.0 );
 
         /* Compute relatlive grid parameters */
-        liPX = li_Trunc( liX );
-        liPY = li_Trunc( liY );
+        liPXrf = li_Floor( liX );
+        liPYrf = li_Floor( liY );
+
+        /* Memorize reference point */
+        liPXmm = liPXrf;
+        liPYmm = liPYrf;
 
         /* Compute sampling nodes */
-        liPXp1 = liPX + li_Size_s( 1 );
-        liPYp1 = liPY + li_Size_s( 1 );
+        liPXm3 = liPXrf - li_Size_s( 3 );
+        liPXm2 = liPXrf - li_Size_s( 2 );
+        liPXm1 = liPXrf - li_Size_s( 1 );
+        liPYm3 = liPYrf - li_Size_s( 3 );
+        liPYm2 = liPYrf - li_Size_s( 2 );
+        liPYm1 = liPYrf - li_Size_s( 1 );
+        liPXp1 = liPXrf + li_Size_s( 1 );
+        liPXp2 = liPXrf + li_Size_s( 2 );
+        liPXp3 = liPXrf + li_Size_s( 3 );
+        liPXp4 = liPXrf + li_Size_s( 4 );
+        liPYp1 = liPYrf + li_Size_s( 1 );
+        liPYp2 = liPYrf + li_Size_s( 2 );
+        liPYp3 = liPYrf + li_Size_s( 3 );
+        liPYp4 = liPYrf + li_Size_s( 4 );
 
-        /* Compute sampling nodes */
-        liPXm3 = liPX - li_Size_s( 3 ); liPXm3 = ( ( liPXm3 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPXm3 );
-        liPXm2 = liPX - li_Size_s( 2 ); liPXm2 = ( ( liPXm2 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPXm2 );
-        liPXm1 = liPX - li_Size_s( 1 ); liPXm1 = ( ( liPXm1 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPXm1 );
-        liPYm3 = liPY - li_Size_s( 3 ); liPYm3 = ( ( liPYm3 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPYm3 );
-        liPYm2 = liPY - li_Size_s( 2 ); liPYm2 = ( ( liPYm2 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPYm2 );
-        liPYm1 = liPY - li_Size_s( 1 ); liPYm1 = ( ( liPYm1 <  li_Size_s( 0 ) ) ? li_Size_s( 0 ) : liPYm1 );
+        /* Boundaries analysis */
+        if ( liPXm3 < li_Size_s( 0 ) ) {
 
-        /* Compute sampling nodes */
-        liPXp2 = liPX + li_Size_s( 2 ); liPXp2 = ( ( liPXp2 >= liWidth  ) ? liWidth  - li_Size_s( 1 ) : liPXp2 );
-        liPXp3 = liPX + li_Size_s( 3 ); liPXp3 = ( ( liPXp3 >= liWidth  ) ? liWidth  - li_Size_s( 1 ) : liPXp3 );
-        liPXp4 = liPX + li_Size_s( 4 ); liPXp4 = ( ( liPXp4 >= liWidth  ) ? liWidth  - li_Size_s( 1 ) : liPXp4 );
-        liPYp2 = liPY + li_Size_s( 2 ); liPYp2 = ( ( liPYp2 >= liHeight ) ? liHeight - li_Size_s( 1 ) : liPYp2 );
-        liPYp3 = liPY + li_Size_s( 3 ); liPYp3 = ( ( liPYp3 >= liHeight ) ? liHeight - li_Size_s( 1 ) : liPYp3 );
-        liPYp4 = liPY + li_Size_s( 4 ); liPYp4 = ( ( liPYp4 >= liHeight ) ? liHeight - li_Size_s( 1 ) : liPYp4 );
+            /* Boundary condition correction */
+            liPXm3 = li_Size_s( 0 );
+
+            /* Boundaries analysis */
+            if ( liPXm2 < li_Size_s( 0 ) ) {
+
+                /* Boundary condition correction */
+                liPXm2 = li_Size_s( 0 );
+
+                /* Boundaries analysis */
+                if ( liPXm1 < li_Size_s( 0 ) ) {
+
+                    /* Boundary condition correction */
+                    liPXm1 = li_Size_s( 0 );
+
+                    /* Boundaries analysis */
+                    if ( liPXrf < li_Size_s( 0 ) ) {
+
+                        /* Boundary condition correction */
+                        liPXrf = li_Size_s( 0 );
+
+                        /* Boundaries analysis */
+                        if ( liPXp1 < li_Size_s( 0 ) ) {
+
+                            /* Boundary condition correction */
+                            liPXp1 = li_Size_s( 0 );
+
+                            /* Boundaries analysis */
+                            if ( liPXp2 < li_Size_s( 0 ) ) {
+
+                                /* Boundary condition correction */
+                                liPXp2 = li_Size_s( 0 );
+
+                                /* Boundaries analysis */
+                                if ( liPXp3 < li_Size_s( 0 ) ) {
+
+                                    /* Boundary condition correction */
+                                    liPXp3 = li_Size_s( 0 );
+
+                                    /* Boundaries analysis */
+                                    if ( liPXp4 < li_Size_s( 0 ) ) {
+
+                                        /* Boundary condition correction */
+                                        liPXp4 = li_Size_s( 0 );
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } else
+        if ( liPXp4 >= liWidth ) {
+
+            /* Boundary condition correction */
+            liPXp4 = liWidth - li_Size_s( 1 );
+
+            /* Boundaries analysis */
+            if ( liPXp3 >= liWidth ) {
+
+                /* Boundary condition correction */
+                liPXp3 = liPXp4;
+
+                /* Boundaries analysis */
+                if ( liPXp2 >= liWidth ) {
+
+                    /* Boundary condition correction */
+                    liPXp2 = liPXp4;
+
+                    /* Boundaries analysis */
+                    if ( liPXp1 >= liWidth ) {
+
+                        /* Boundary condition correction */
+                        liPXp1 = liPXp4;
+
+                        /* Boundaries analysis */
+                        if ( liPXrf >= liWidth ) {
+
+                            /* Boundary condition correction */
+                            liPXrf = liPXp4;
+
+                            /* Boundaries analysis */
+                            if ( liPXm1 >= liWidth ) {
+
+                                /* Boundary condition correction */
+                                liPXm1 = liPXp4;
+
+                                /* Boundaries analysis */
+                                if ( liPXm2 >= liWidth ) {
+
+                                    /* Boundary condition correction */
+                                    liPXm2 = liPXp4;
+
+                                    /* Boundaries analysis */
+                                    if ( liPXm3 >= liWidth ) {
+
+                                        /* Boundary condition correction */
+                                        liPXm3 = liPXp4;
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        /* Boundaries analysis */
+        if ( liPYm3 < li_Size_s( 0 ) ) {
+
+            /* Boundary condition correction */
+            liPYm3 = li_Size_s( 0 );
+
+            /* Boundaries analysis */
+            if ( liPYm2 < li_Size_s( 0 ) ) {
+
+                /* Boundary condition correction */
+                liPYm2 = li_Size_s( 0 );
+
+                /* Boundaries analysis */
+                if ( liPYm1 < li_Size_s( 0 ) ) {
+
+                    /* Boundary condition correction */
+                    liPYm1 = li_Size_s( 0 );
+
+                    /* Boundaries analysis */
+                    if ( liPYrf < li_Size_s( 0 ) ) {
+
+                        /* Boundary condition correction */
+                        liPYrf = li_Size_s( 0 );
+
+                        /* Boundaries analysis */
+                        if ( liPYp1 < li_Size_s( 0 ) ) {
+
+                            /* Boundary condition correction */
+                            liPYp1 = li_Size_s( 0 );
+
+                            /* Boundaries analysis */
+                            if ( liPYp2 < li_Size_s( 0 ) ) {
+
+                                /* Boundary condition correction */
+                                liPYp2 = li_Size_s( 0 );
+
+                                /* Boundaries analysis */
+                                if ( liPYp3 < li_Size_s( 0 ) ) {
+
+                                    /* Boundary condition correction */
+                                    liPYp3 = li_Size_s( 0 );
+
+                                    /* Boundaries analysis */
+                                    if ( liPYp4 < li_Size_s( 0 ) ) {
+
+                                        /* Boundary condition correction */
+                                        liPYp4 = li_Size_s( 0 );
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } else
+        if ( liPYp4 >= liHeight ) {
+
+            /* Boundary condition correction */
+            liPYp4 = liHeight - li_Size_s( 1 );
+
+            /* Boundaries analysis */
+            if ( liPYp3 >= liHeight ) {
+
+                /* Boundary condition correction */
+                liPYp3 = liPYp4;
+
+                /* Boundaries analysis */
+                if ( liPYp2 >= liHeight ) {
+
+                    /* Boundary condition correction */
+                    liPYp2 = liPYp4;
+
+                    /* Boundaries analysis */
+                    if ( liPYp1 >= liHeight ) {
+
+                        /* Boundary condition correction */
+                        liPYp1 = liPYp4;
+
+                        /* Boundaries analysis */
+                        if ( liPYrf >= liHeight ) {
+
+                            /* Boundary condition correction */
+                            liPYrf = liPYp4;
+
+                            /* Boundaries analysis */
+                            if ( liPYm1 >= liHeight ) {
+
+                                /* Boundary condition correction */
+                                liPYm1 = liPYp4;
+
+                                /* Boundaries analysis */
+                                if ( liPYm2 >= liHeight ) {
+
+                                    /* Boundary condition correction */
+                                    liPYm2 = liPYp4;
+
+                                    /* Boundaries analysis */
+                                    if ( liPYm3 >= liHeight ) {
+
+                                        /* Boundary condition correction */
+                                        liPYm3 = liPYp4;
+
+                                    }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
 
         /* Compute memory width */
         liWidth *= liLayer; if ( liWidth % li_Size_s( 4 ) ) liWidth += li_Size_s( 4 ) - liWidth % li_Size_s( 4 );
@@ -133,7 +387,7 @@
         liVS[ 0] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXm3 + liChannel );
         liVS[ 1] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXm2 + liChannel );
         liVS[ 2] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXm1 + liChannel );
-        liVS[ 3] = * ( liBytes + liWidth * liPYm3 + liLayer * liPX   + liChannel );
+        liVS[ 3] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXrf + liChannel );
         liVS[ 4] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXp1 + liChannel );
         liVS[ 5] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXp2 + liChannel );
         liVS[ 6] = * ( liBytes + liWidth * liPYm3 + liLayer * liPXp3 + liChannel );
@@ -141,7 +395,7 @@
         liVS[ 8] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXm3 + liChannel );
         liVS[ 9] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXm2 + liChannel );
         liVS[10] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXm1 + liChannel );
-        liVS[11] = * ( liBytes + liWidth * liPYm2 + liLayer * liPX   + liChannel );
+        liVS[11] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXrf + liChannel );
         liVS[12] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXp1 + liChannel );
         liVS[13] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXp2 + liChannel );
         liVS[14] = * ( liBytes + liWidth * liPYm2 + liLayer * liPXp3 + liChannel );
@@ -149,23 +403,23 @@
         liVS[16] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXm3 + liChannel );
         liVS[17] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXm2 + liChannel );
         liVS[18] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXm1 + liChannel );
-        liVS[19] = * ( liBytes + liWidth * liPYm1 + liLayer * liPX   + liChannel );
+        liVS[19] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXrf + liChannel );
         liVS[20] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp1 + liChannel );
         liVS[21] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp2 + liChannel );
         liVS[22] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp3 + liChannel );
         liVS[23] = * ( liBytes + liWidth * liPYm1 + liLayer * liPXp4 + liChannel );
-        liVS[24] = * ( liBytes + liWidth * liPY   + liLayer * liPXm3 + liChannel );
-        liVS[25] = * ( liBytes + liWidth * liPY   + liLayer * liPXm2 + liChannel );
-        liVS[26] = * ( liBytes + liWidth * liPY   + liLayer * liPXm1 + liChannel );
-        liVS[27] = * ( liBytes + liWidth * liPY   + liLayer * liPX   + liChannel );
-        liVS[28] = * ( liBytes + liWidth * liPY   + liLayer * liPXp1 + liChannel );
-        liVS[29] = * ( liBytes + liWidth * liPY   + liLayer * liPXp2 + liChannel );
-        liVS[30] = * ( liBytes + liWidth * liPY   + liLayer * liPXp3 + liChannel );
-        liVS[31] = * ( liBytes + liWidth * liPY   + liLayer * liPXp4 + liChannel );
+        liVS[24] = * ( liBytes + liWidth * liPYrf + liLayer * liPXm3 + liChannel );
+        liVS[25] = * ( liBytes + liWidth * liPYrf + liLayer * liPXm2 + liChannel );
+        liVS[26] = * ( liBytes + liWidth * liPYrf + liLayer * liPXm1 + liChannel );
+        liVS[27] = * ( liBytes + liWidth * liPYrf + liLayer * liPXrf + liChannel );
+        liVS[28] = * ( liBytes + liWidth * liPYrf + liLayer * liPXp1 + liChannel );
+        liVS[29] = * ( liBytes + liWidth * liPYrf + liLayer * liPXp2 + liChannel );
+        liVS[30] = * ( liBytes + liWidth * liPYrf + liLayer * liPXp3 + liChannel );
+        liVS[31] = * ( liBytes + liWidth * liPYrf + liLayer * liPXp4 + liChannel );
         liVS[32] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXm3 + liChannel );
         liVS[33] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXm2 + liChannel );
         liVS[34] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXm1 + liChannel );
-        liVS[35] = * ( liBytes + liWidth * liPYp1 + liLayer * liPX   + liChannel );
+        liVS[35] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXrf + liChannel );
         liVS[36] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp1 + liChannel );
         liVS[37] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp2 + liChannel );
         liVS[38] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp3 + liChannel );
@@ -173,7 +427,7 @@
         liVS[40] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXm3 + liChannel );
         liVS[41] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXm2 + liChannel );
         liVS[42] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXm1 + liChannel );
-        liVS[43] = * ( liBytes + liWidth * liPYp2 + liLayer * liPX   + liChannel );
+        liVS[43] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXrf + liChannel );
         liVS[44] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXp1 + liChannel );
         liVS[45] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXp2 + liChannel );
         liVS[46] = * ( liBytes + liWidth * liPYp2 + liLayer * liPXp3 + liChannel );
@@ -181,7 +435,7 @@
         liVS[48] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXm3 + liChannel );
         liVS[49] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXm2 + liChannel );
         liVS[50] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXm1 + liChannel );
-        liVS[51] = * ( liBytes + liWidth * liPYp3 + liLayer * liPX   + liChannel );
+        liVS[51] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXrf + liChannel );
         liVS[52] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXp1 + liChannel );
         liVS[53] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXp2 + liChannel );
         liVS[54] = * ( liBytes + liWidth * liPYp3 + liLayer * liPXp3 + liChannel );
@@ -189,7 +443,7 @@
         liVS[56] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXm3 + liChannel );
         liVS[57] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXm2 + liChannel );
         liVS[58] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXm1 + liChannel );
-        liVS[59] = * ( liBytes + liWidth * liPYp4 + liLayer * liPX   + liChannel );
+        liVS[59] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXrf + liChannel );
         liVS[60] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXp1 + liChannel );
         liVS[61] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXp2 + liChannel );
         liVS[62] = * ( liBytes + liWidth * liPYp4 + liLayer * liPXp3 + liChannel );
@@ -3839,14 +4093,14 @@
                    ( li_Real_s(            2882101933529964216320.0 ) / li_Real_s(     73209999932589693839616245760.0 ) ) * liVS[63];
 
         /* Prepare interpolated value computation */
-        liTX1 = ( liX + li_Real_s( 3.0 ) ) - liPX; 
+        liTX1 = ( liX + li_Real_s( 3.0 ) ) - liPXmm; 
         liTX2 = liTX1 * liTX1;
         liTX3 = liTX1 * liTX2;
         liTX4 = liTX1 * liTX3;
         liTX5 = liTX1 * liTX4;
         liTX6 = liTX1 * liTX5;
         liTX7 = liTX1 * liTX6;
-        liTY1 = ( liY + li_Real_s( 3.0 ) ) - liPY; 
+        liTY1 = ( liY + li_Real_s( 3.0 ) ) - liPYmm; 
         liTY2 = liTY1 * liTY1; 
         liTY3 = liTY1 * liTY2; 
         liTY4 = liTY1 * liTY3; 

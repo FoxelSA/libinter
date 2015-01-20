@@ -67,7 +67,7 @@
         li_Real_t liTX = li_Real_s( 0.0 );
         li_Real_t liTY = li_Real_s( 0.0 );
 
-        /* Interpolation variables */
+        /* Interpolation reference variables */
         li_Size_t liPXrf = li_Size_s( 0 );
         li_Size_t liPYrf = li_Size_s( 0 );
         li_Size_t liPXmm = li_Size_s( 0 );
@@ -112,6 +112,7 @@
             /* Boundary condition correction */
             liPXp1 = liWidth - li_Size_s( 1 );
 
+            /* Boundaries analysis */
             if ( liPXrf >= liWidth ) {
 
                 /* Boundary condition correction */
@@ -141,6 +142,7 @@
             /* Boundary condition correction */
             liPYp1 = liHeight - li_Size_s( 1 );
 
+            /* Boundaries analysis */
             if ( liPYrf >= liHeight ) {
 
                 /* Boundary condition correction */
