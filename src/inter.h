@@ -129,7 +129,6 @@
     # define li_Real_i          "lf"
 
     /* Define floating point operators */
-    # define li_Trunc( x )      trunc( x )
     # define li_Floor( x )      floor( x )
 
 /* 
