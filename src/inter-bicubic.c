@@ -134,9 +134,7 @@
 
             }
 
-        }
-
-        /* Boundaries analysis */
+        } else
         if ( liPXp2 >= liWidth ) {
 
             /* Boundary condition correction */
@@ -198,9 +196,7 @@
 
             }
 
-        }
-
-        /* Boundaries analysis */
+        } else
         if ( liPYp2 >= liHeight ) {
 
             /* Boundary condition correction */

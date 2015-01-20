@@ -88,13 +88,13 @@
      *  The function performs an order four fast bicubic interpolation of bitmap 
      *  pixels based on bitmap pointed by liBytes.
      *  
-     *  \param liBytes   Pointer to bitmap
-     *  \param liWidth   Bitmap width, in pixels
-     *  \param liHeight  Bitmap height, in pixels
-     *  \param liLayer   Bitmap number of chromatic layers
-     *  \param liChannel Bitmap interpolated layer
-     *  \param liX       Interpolated point position x
-     *  \param liY       Interpolated point position y
+     *  \param  liBytes   Pointer to bitmap
+     *  \param  liWidth   Bitmap width, in pixels
+     *  \param  liHeight  Bitmap height, in pixels
+     *  \param  liLayer   Bitmap number of chromatic layers
+     *  \param  liChannel Bitmap interpolated layer
+     *  \param  liX       Interpolated point position x
+     *  \param  liY       Interpolated point position y
      *  
      *  \return Returns Interpolated value
      */

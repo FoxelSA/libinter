@@ -68,30 +68,106 @@
         li_Real_t liTY = li_Real_s( 0.0 );
 
         /* Interpolation variables */
-        li_Size_t liPX = li_Size_s( 0 );
-        li_Size_t liPY = li_Size_s( 0 );
+        li_Size_t liPXrf = li_Size_s( 0 );
+        li_Size_t liPYrf = li_Size_s( 0 );
+        li_Size_t liPXmm = li_Size_s( 0 );
+        li_Size_t liPYmm = li_Size_s( 0 );
+
+        /* Sampling variables */
+        li_Size_t liPXp1 = li_Size_s( 0 );
+        li_Size_t liPYp1 = li_Size_s( 0 );
 
         /* Interpolated variables */
         li_Real_t liIV = li_Real_s( 0.0 );
 
         /* Compute relatlive grid parameters */
-        liPX = li_Trunc( liX ); liTX = liX - liPX;
-        liPY = li_Trunc( liY ); liTY = liY - liPY;
+        liPXrf = li_Floor( liX ); 
+        liPYrf = li_Floor( liY );
+
+        /* Memorize reference point */
+        liPXmm = liPXrf;
+        liPYmm = liPYrf;
+
+        /* Compute sampling nodes */
+        liPXp1 = liPXrf + li_Size_s( 1 );
+        liPYp1 = liPYrf + li_Size_s( 1 );
+
+        /* Boundaries analysis */
+        if ( liPXrf < li_Size_s( 0 ) ) {
+
+            /* Boundary condition correction */
+            liPXrf = li_Size_s( 0 );
+
+            /* Boundaries analysis */
+            if ( liPXp1 < li_Size_s( 0 ) ) {
+
+                /* Boundary condition correction */
+                liPXp1 = li_Size_s( 0 );
+
+            }
+
+        } else
+        if ( liPXp1 >= liWidth ) {
+
+            /* Boundary condition correction */
+            liPXp1 = liWidth - li_Size_s( 1 );
+
+            if ( liPXrf >= liWidth ) {
+
+                /* Boundary condition correction */
+                liPXrf = liPXp1;
+
+            }
+
+        }
+
+        /* Boundaries analysis */
+        if ( liPYrf < li_Size_s( 0 ) ) {
+
+            /* Boundary condition correction */
+            liPYrf = li_Size_s( 0 );
+
+            /* Boundaries analysis */
+            if ( liPYp1 < li_Size_s( 0 ) ) {
+
+                /* Boundary condition correction */
+                liPYp1 = li_Size_s( 0 );
+
+            }
+
+        } else
+        if ( liPYp1 >= liHeight ) {
+
+            /* Boundary condition correction */
+            liPYp1 = liHeight - li_Size_s( 1 );
+
+            if ( liPYrf >= liHeight ) {
+
+                /* Boundary condition correction */
+                liPYrf = liPYp1;
+
+            }
+
+        }
 
         /* Compute memory width */
         liWidth *= liLayer; if ( liWidth % li_Size_s( 4 ) ) liWidth += li_Size_s( 4 ) - liWidth % li_Size_s( 4 );
 
         /* Compute interpolation vector */
-        liVS[0] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX     ) + liChannel );
-        liVS[1] = * ( liBytes + liWidth * ( liPY ++ ) + liLayer * ( liPX + 1 ) + liChannel );
-        liVS[2] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX     ) + liChannel );
-        liVS[3] = * ( liBytes + liWidth * ( liPY    ) + liLayer * ( liPX + 1 ) + liChannel );
+        liVS[0] = * ( liBytes + liWidth * liPYrf + liLayer * liPXrf + liChannel );
+        liVS[1] = * ( liBytes + liWidth * liPYrf + liLayer * liPXp1 + liChannel );
+        liVS[2] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXrf + liChannel );
+        liVS[3] = * ( liBytes + liWidth * liPYp1 + liLayer * liPXp1 + liChannel );
 
         /* Compute interpolation matrix product */
         liVC[0] = + liVS[0];
         liVC[1] = - liVS[0] + liVS[2];
         liVC[2] = - liVS[0] + liVS[1];
         liVC[3] = + liVS[0] - liVS[1] - liVS[2] + liVS[3];
+
+        /* Prepare interpolated value computation */
+        liTX = liX - liPXmm;
+        liTY = liY - liPYmm;
 
         /* Compute interpolated value */
         liIV = liVC[0]               + 
