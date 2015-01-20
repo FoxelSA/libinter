@@ -130,6 +130,7 @@
 
     /* Define floating point operators */
     # define li_Trunc( x )      trunc( x )
+    # define li_Floor( x )      floor( x )
 
 /* 
     Header - Typedefs
