@@ -77,7 +77,7 @@
         li_Size_t liPXmm = li_Size_s( 0 );
         li_Size_t liPYmm = li_Size_s( 0 );
 
-        /* Sampling variables */
+        /* Interpolation sampling variables */
         li_Size_t liPXm1 = li_Size_s( 0 );
         li_Size_t liPXp1 = li_Size_s( 0 );
         li_Size_t liPXp2 = li_Size_s( 0 );
@@ -97,11 +97,11 @@
         liPYmm = liPYrf;
 
         /* Compute sampling nodes */
-        liPXp1 = liPXrf + li_Size_s( 1 );
-        liPYp1 = liPYrf + li_Size_s( 1 );
         liPXm1 = liPXrf - li_Size_s( 1 );
         liPYm1 = liPYrf - li_Size_s( 1 );
+        liPXp1 = liPXrf + li_Size_s( 1 );
         liPXp2 = liPXrf + li_Size_s( 2 );
+        liPYp1 = liPYrf + li_Size_s( 1 );
         liPYp2 = liPYrf + li_Size_s( 2 );
 
         /* Boundaries analysis */

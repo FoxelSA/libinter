@@ -84,7 +84,7 @@
  */
 
     /*! \brief Fast bipentic interpolation method
-
+     *
      *  The functions performs an order eight fast biheptic interpolation of 
      *  bitmap pixels based on bitmap pointed by liBytes.
      *  

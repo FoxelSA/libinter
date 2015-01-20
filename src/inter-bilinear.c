@@ -73,7 +73,7 @@
         li_Size_t liPXmm = li_Size_s( 0 );
         li_Size_t liPYmm = li_Size_s( 0 );
 
-        /* Sampling variables */
+        /* Interpolation sampling variables */
         li_Size_t liPXp1 = li_Size_s( 0 );
         li_Size_t liPYp1 = li_Size_s( 0 );
 
