@@ -86,9 +86,7 @@
     /*! \brief Fast bicubic interpolation method
      *  
      *  The function performs an order four fast bicubic interpolation of bitmap 
-     *  pixels based on bitmap pointed by liBytes. The value of floating point
-     *  coordinates have to be in the [0,liWidth-1[ × [0,liHeight-1[ range. This
-     *  last condition is not verified by the function.
+     *  pixels based on bitmap pointed by liBytes.
      *  
      *  \param liBytes   Pointer to bitmap
      *  \param liWidth   Bitmap width, in pixels
