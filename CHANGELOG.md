@@ -2,7 +2,7 @@
 
 ### Release 0.3 (January 20, 2015)
 
-- `Revised` : Boundary conditions revision on C(0) 2D interpolation methods
+- `Revised` : Strong boundary conditions on C(0) 2D interpolation methods
 
 ### Release 0.2.1 (January 8, 2015)
 
